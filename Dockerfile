@@ -10,7 +10,6 @@ COPY public ./public
 COPY migration ./migration
 
 ENV DATA_DIR=/app/data
-VOLUME ["/app/data"]
 
 EXPOSE 8080
 CMD ["node", "server/server.js"]
