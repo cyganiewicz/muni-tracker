@@ -1,0 +1,2459 @@
+[
+  {
+    "name": "Alford",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "6"
+  },
+  {
+    "name": "Becket",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "22"
+  },
+  {
+    "name": "Blandford",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 1,
+    "datawrapper_code": "33"
+  },
+  {
+    "name": "Chester",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 1,
+    "datawrapper_code": "59"
+  },
+  {
+    "name": "Egremont",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "90"
+  },
+  {
+    "name": "Granville",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 1,
+    "datawrapper_code": "112"
+  },
+  {
+    "name": "Great Barrington",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "113"
+  },
+  {
+    "name": "Lee",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "150"
+  },
+  {
+    "name": "Lenox",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "152"
+  },
+  {
+    "name": "Monterey",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "193"
+  },
+  {
+    "name": "Mount Washington",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "195"
+  },
+  {
+    "name": "New Marlborough",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "203"
+  },
+  {
+    "name": "Otis",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "225"
+  },
+  {
+    "name": "Richmond",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "249"
+  },
+  {
+    "name": "Russell",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 1,
+    "datawrapper_code": "256"
+  },
+  {
+    "name": "Sandisfield",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "260"
+  },
+  {
+    "name": "Sheffield",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "267"
+  },
+  {
+    "name": "Stockbridge",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "283"
+  },
+  {
+    "name": "Tolland",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 1,
+    "datawrapper_code": "297"
+  },
+  {
+    "name": "Tyringham",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "302"
+  },
+  {
+    "name": "West Stockbridge",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "326"
+  },
+  {
+    "name": "Middlefield",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 1,
+    "datawrapper_code": "183"
+  },
+  {
+    "name": "Washington",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 1,
+    "datawrapper_code": "313"
+  },
+  {
+    "name": "Worthington",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 1,
+    "datawrapper_code": "349"
+  },
+  {
+    "name": "Charlemont",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 2,
+    "datawrapper_code": "53"
+  },
+  {
+    "name": "Monroe",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 2,
+    "datawrapper_code": "190"
+  },
+  {
+    "name": "Rowe",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 2,
+    "datawrapper_code": "253"
+  },
+  {
+    "name": "Adams",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "4"
+  },
+  {
+    "name": "Cheshire",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "58"
+  },
+  {
+    "name": "Clarksburg",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "63"
+  },
+  {
+    "name": "Cummington",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 2,
+    "datawrapper_code": "69"
+  },
+  {
+    "name": "Dalton",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "70"
+  },
+  {
+    "name": "Florida",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "98"
+  },
+  {
+    "name": "Hancock",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "121"
+  },
+  {
+    "name": "Hawley",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 2,
+    "datawrapper_code": "129"
+  },
+  {
+    "name": "Hinsdale",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "132"
+  },
+  {
+    "name": "Lanesborough",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "148"
+  },
+  {
+    "name": "New Ashford",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "200"
+  },
+  {
+    "name": "North Adams",
+    "municipal_type": "City",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "209"
+  },
+  {
+    "name": "Peru",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "233"
+  },
+  {
+    "name": "Pittsfield",
+    "municipal_type": "City",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "236"
+  },
+  {
+    "name": "Plainfield",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 2,
+    "datawrapper_code": "237"
+  },
+  {
+    "name": "Savoy",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "263"
+  },
+  {
+    "name": "Williamstown",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "341"
+  },
+  {
+    "name": "Windsor",
+    "municipal_type": "Town",
+    "county": "Berkshire",
+    "region": 2,
+    "datawrapper_code": "345"
+  },
+  {
+    "name": "Chesterfield",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "60"
+  },
+  {
+    "name": "Huntington",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "143"
+  },
+  {
+    "name": "Montgomery",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "194"
+  },
+  {
+    "name": "Agawam",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "5"
+  },
+  {
+    "name": "Amherst",
+    "municipal_type": "City",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "8"
+  },
+  {
+    "name": "Chicopee",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "61"
+  },
+  {
+    "name": "Easthampton",
+    "municipal_type": "City",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "87"
+  },
+  {
+    "name": "Hadley",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "117"
+  },
+  {
+    "name": "Hatfield",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "127"
+  },
+  {
+    "name": "Holyoke",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "137"
+  },
+  {
+    "name": "Longmeadow",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "159"
+  },
+  {
+    "name": "Northampton",
+    "municipal_type": "City",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "214"
+  },
+  {
+    "name": "South Hadley",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "275"
+  },
+  {
+    "name": "Southampton",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "276"
+  },
+  {
+    "name": "Southwick",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "279"
+  },
+  {
+    "name": "Springfield",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "281"
+  },
+  {
+    "name": "Sunderland",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 3,
+    "datawrapper_code": "289"
+  },
+  {
+    "name": "West Springfield",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "325"
+  },
+  {
+    "name": "Westfield",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 3,
+    "datawrapper_code": "329"
+  },
+  {
+    "name": "Westhampton",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "331"
+  },
+  {
+    "name": "Whately",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 3,
+    "datawrapper_code": "337"
+  },
+  {
+    "name": "Williamsburg",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 3,
+    "datawrapper_code": "340"
+  },
+  {
+    "name": "Ashfield",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "13"
+  },
+  {
+    "name": "Bernardston",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "29"
+  },
+  {
+    "name": "Buckland",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "47"
+  },
+  {
+    "name": "Colrain",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "66"
+  },
+  {
+    "name": "Conway",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "68"
+  },
+  {
+    "name": "Erving",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "91"
+  },
+  {
+    "name": "Gill",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "106"
+  },
+  {
+    "name": "Goshen",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 2,
+    "datawrapper_code": "108"
+  },
+  {
+    "name": "Heath",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "130"
+  },
+  {
+    "name": "Leverett",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "154"
+  },
+  {
+    "name": "Leyden",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "156"
+  },
+  {
+    "name": "New Salem",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "204"
+  },
+  {
+    "name": "Northfield",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "217"
+  },
+  {
+    "name": "Orange",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "223"
+  },
+  {
+    "name": "Pelham",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 4,
+    "datawrapper_code": "230"
+  },
+  {
+    "name": "Shelburne",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "268"
+  },
+  {
+    "name": "Shutesbury",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "272"
+  },
+  {
+    "name": "Warwick",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "312"
+  },
+  {
+    "name": "Wendell",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "319"
+  },
+  {
+    "name": "Deerfield",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 3,
+    "datawrapper_code": "74"
+  },
+  {
+    "name": "Greenfield",
+    "municipal_type": "City",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "114"
+  },
+  {
+    "name": "Montague",
+    "municipal_type": "Town",
+    "county": "Franklin",
+    "region": 4,
+    "datawrapper_code": "192"
+  },
+  {
+    "name": "Ashburnham",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "11"
+  },
+  {
+    "name": "Ashby",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 5,
+    "datawrapper_code": "12"
+  },
+  {
+    "name": "Athol",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "15"
+  },
+  {
+    "name": "Barre",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "21"
+  },
+  {
+    "name": "Fitchburg",
+    "municipal_type": "City",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "97"
+  },
+  {
+    "name": "Gardner",
+    "municipal_type": "City",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "103"
+  },
+  {
+    "name": "Hardwick",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "124"
+  },
+  {
+    "name": "Hubbardston",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "140"
+  },
+  {
+    "name": "Leominster",
+    "municipal_type": "City",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "153"
+  },
+  {
+    "name": "Lunenburg",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "162"
+  },
+  {
+    "name": "New Braintree",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "202"
+  },
+  {
+    "name": "North Brookfield",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "212"
+  },
+  {
+    "name": "Oakham",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "222"
+  },
+  {
+    "name": "Pepperell",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 5,
+    "datawrapper_code": "232"
+  },
+  {
+    "name": "Petersham",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "234"
+  },
+  {
+    "name": "Phillipston",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "235"
+  },
+  {
+    "name": "Princeton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "241"
+  },
+  {
+    "name": "Royalston",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "255"
+  },
+  {
+    "name": "Shirley",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 5,
+    "datawrapper_code": "270"
+  },
+  {
+    "name": "Templeton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "294"
+  },
+  {
+    "name": "Townsend",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 5,
+    "datawrapper_code": "299"
+  },
+  {
+    "name": "Westminster",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "332"
+  },
+  {
+    "name": "Winchendon",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "343"
+  },
+  {
+    "name": "Rutland",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 5,
+    "datawrapper_code": "257"
+  },
+  {
+    "name": "Belchertown",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 6,
+    "datawrapper_code": "24"
+  },
+  {
+    "name": "Brimfield",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "43"
+  },
+  {
+    "name": "Brookfield",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "45"
+  },
+  {
+    "name": "Charlton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "54"
+  },
+  {
+    "name": "Dudley",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "80"
+  },
+  {
+    "name": "East Brookfield",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "84"
+  },
+  {
+    "name": "East Longmeadow",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "85"
+  },
+  {
+    "name": "Granby",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 6,
+    "datawrapper_code": "111"
+  },
+  {
+    "name": "Hampden",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "120"
+  },
+  {
+    "name": "Holland",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "135"
+  },
+  {
+    "name": "Ludlow",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "161"
+  },
+  {
+    "name": "Monson",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "191"
+  },
+  {
+    "name": "Palmer",
+    "municipal_type": "City",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "227"
+  },
+  {
+    "name": "Southbridge",
+    "municipal_type": "City",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "278"
+  },
+  {
+    "name": "Sturbridge",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "287"
+  },
+  {
+    "name": "Wales",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "306"
+  },
+  {
+    "name": "Ware",
+    "municipal_type": "Town",
+    "county": "Hampshire",
+    "region": 6,
+    "datawrapper_code": "309"
+  },
+  {
+    "name": "Warren",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "311"
+  },
+  {
+    "name": "Webster",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "316"
+  },
+  {
+    "name": "West Brookfield",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 6,
+    "datawrapper_code": "323"
+  },
+  {
+    "name": "Wilbraham",
+    "municipal_type": "Town",
+    "county": "Hampden",
+    "region": 6,
+    "datawrapper_code": "339"
+  },
+  {
+    "name": "Auburn",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "17"
+  },
+  {
+    "name": "Bellingham",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 7,
+    "datawrapper_code": "25"
+  },
+  {
+    "name": "Blackstone",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "32"
+  },
+  {
+    "name": "Douglas",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "77"
+  },
+  {
+    "name": "Grafton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "110"
+  },
+  {
+    "name": "Holden",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "134"
+  },
+  {
+    "name": "Hopedale",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "138"
+  },
+  {
+    "name": "Leicester",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "151"
+  },
+  {
+    "name": "Mendon",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "179"
+  },
+  {
+    "name": "Milford",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "185"
+  },
+  {
+    "name": "Millbury",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "186"
+  },
+  {
+    "name": "Millville",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "188"
+  },
+  {
+    "name": "Northbridge",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "216"
+  },
+  {
+    "name": "Oxford",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "226"
+  },
+  {
+    "name": "Paxton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "228"
+  },
+  {
+    "name": "Shrewsbury",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "271"
+  },
+  {
+    "name": "Spencer",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "280"
+  },
+  {
+    "name": "Sutton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "290"
+  },
+  {
+    "name": "Upton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "303"
+  },
+  {
+    "name": "Uxbridge",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "304"
+  },
+  {
+    "name": "Worcester",
+    "municipal_type": "City",
+    "county": "Worcester",
+    "region": 7,
+    "datawrapper_code": "348"
+  },
+  {
+    "name": "Acton",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "2"
+  },
+  {
+    "name": "Ayer",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "19"
+  },
+  {
+    "name": "Berlin",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "28"
+  },
+  {
+    "name": "Bolton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "34"
+  },
+  {
+    "name": "Boxborough",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "37"
+  },
+  {
+    "name": "Clinton",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "64"
+  },
+  {
+    "name": "Groton",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "115"
+  },
+  {
+    "name": "Harvard",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "125"
+  },
+  {
+    "name": "Hopkinton",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "139"
+  },
+  {
+    "name": "Hudson",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "141"
+  },
+  {
+    "name": "Lancaster",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "147"
+  },
+  {
+    "name": "Littleton",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "158"
+  },
+  {
+    "name": "Marlborough",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "170"
+  },
+  {
+    "name": "Maynard",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "174"
+  },
+  {
+    "name": "Northborough",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "215"
+  },
+  {
+    "name": "Southborough",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "277"
+  },
+  {
+    "name": "Sterling",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "282"
+  },
+  {
+    "name": "Stow",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 8,
+    "datawrapper_code": "286"
+  },
+  {
+    "name": "West Boylston",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "321"
+  },
+  {
+    "name": "Westborough",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "328"
+  },
+  {
+    "name": "Boylston",
+    "municipal_type": "Town",
+    "county": "Worcester",
+    "region": 8,
+    "datawrapper_code": "39"
+  },
+  {
+    "name": "Amesbury",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "7"
+  },
+  {
+    "name": "Andover",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "9"
+  },
+  {
+    "name": "Billerica",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "31"
+  },
+  {
+    "name": "Boxford",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "38"
+  },
+  {
+    "name": "Carlisle",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "51"
+  },
+  {
+    "name": "Chelmsford",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "56"
+  },
+  {
+    "name": "Dracut",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "79"
+  },
+  {
+    "name": "Dunstable",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "81"
+  },
+  {
+    "name": "Georgetown",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "105"
+  },
+  {
+    "name": "Groveland",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "116"
+  },
+  {
+    "name": "Haverhill",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "128"
+  },
+  {
+    "name": "Lawrence",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "149"
+  },
+  {
+    "name": "Lowell",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "160"
+  },
+  {
+    "name": "Merrimac",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "180"
+  },
+  {
+    "name": "Methuen",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "181"
+  },
+  {
+    "name": "Newbury",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "205"
+  },
+  {
+    "name": "Newburyport",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "206"
+  },
+  {
+    "name": "North Andover",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "210"
+  },
+  {
+    "name": "Salisbury",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "259"
+  },
+  {
+    "name": "Tewksbury",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "295"
+  },
+  {
+    "name": "Tyngsborough",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "301"
+  },
+  {
+    "name": "West Newbury",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 9,
+    "datawrapper_code": "324"
+  },
+  {
+    "name": "Westford",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 9,
+    "datawrapper_code": "330"
+  },
+  {
+    "name": "Beverly",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "30"
+  },
+  {
+    "name": "Danvers",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "71"
+  },
+  {
+    "name": "Essex",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "92"
+  },
+  {
+    "name": "Gloucester",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "107"
+  },
+  {
+    "name": "Hamilton",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "119"
+  },
+  {
+    "name": "Ipswich",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "144"
+  },
+  {
+    "name": "Lynn",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "163"
+  },
+  {
+    "name": "Lynnfield",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "164"
+  },
+  {
+    "name": "Manchester",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "166"
+  },
+  {
+    "name": "Marblehead",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "168"
+  },
+  {
+    "name": "Middleton",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "184"
+  },
+  {
+    "name": "Nahant",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "196"
+  },
+  {
+    "name": "North Reading",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 10,
+    "datawrapper_code": "213"
+  },
+  {
+    "name": "Peabody",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "229"
+  },
+  {
+    "name": "Rockport",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "252"
+  },
+  {
+    "name": "Rowley",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "254"
+  },
+  {
+    "name": "Salem",
+    "municipal_type": "City",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "258"
+  },
+  {
+    "name": "Saugus",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "262"
+  },
+  {
+    "name": "Swampscott",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "291"
+  },
+  {
+    "name": "Topsfield",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "298"
+  },
+  {
+    "name": "Wenham",
+    "municipal_type": "Town",
+    "county": "Essex",
+    "region": 10,
+    "datawrapper_code": "320"
+  },
+  {
+    "name": "Arlington",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "10"
+  },
+  {
+    "name": "Belmont",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "26"
+  },
+  {
+    "name": "Boston",
+    "municipal_type": "City",
+    "county": "Suffolk",
+    "region": 11,
+    "datawrapper_code": "35"
+  },
+  {
+    "name": "Brookline",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 11,
+    "datawrapper_code": "46"
+  },
+  {
+    "name": "Cambridge",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "49"
+  },
+  {
+    "name": "Chelsea",
+    "municipal_type": "City",
+    "county": "Suffolk",
+    "region": 11,
+    "datawrapper_code": "57"
+  },
+  {
+    "name": "Everett",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "93"
+  },
+  {
+    "name": "Malden",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "165"
+  },
+  {
+    "name": "Medford",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "176"
+  },
+  {
+    "name": "Melrose",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "178"
+  },
+  {
+    "name": "Newton",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "207"
+  },
+  {
+    "name": "Quincy",
+    "municipal_type": "City",
+    "county": "Norfolk",
+    "region": 11,
+    "datawrapper_code": "243"
+  },
+  {
+    "name": "Revere",
+    "municipal_type": "City",
+    "county": "Suffolk",
+    "region": 11,
+    "datawrapper_code": "248"
+  },
+  {
+    "name": "Somerville",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "274"
+  },
+  {
+    "name": "Stoneham",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "284"
+  },
+  {
+    "name": "Wakefield",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "305"
+  },
+  {
+    "name": "Waltham",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "308"
+  },
+  {
+    "name": "Watertown",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "314"
+  },
+  {
+    "name": "Winchester",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "344"
+  },
+  {
+    "name": "Winthrop",
+    "municipal_type": "City",
+    "county": "Suffolk",
+    "region": 11,
+    "datawrapper_code": "346"
+  },
+  {
+    "name": "Woburn",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 11,
+    "datawrapper_code": "347"
+  },
+  {
+    "name": "Ashland",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "14"
+  },
+  {
+    "name": "Bedford",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "23"
+  },
+  {
+    "name": "Burlington",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "48"
+  },
+  {
+    "name": "Concord",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "67"
+  },
+  {
+    "name": "Dedham",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "73"
+  },
+  {
+    "name": "Dover",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "78"
+  },
+  {
+    "name": "Framingham",
+    "municipal_type": "City",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "100"
+  },
+  {
+    "name": "Holliston",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "136"
+  },
+  {
+    "name": "Lexington",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "155"
+  },
+  {
+    "name": "Lincoln",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "157"
+  },
+  {
+    "name": "Medfield",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "175"
+  },
+  {
+    "name": "Milton",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "189"
+  },
+  {
+    "name": "Natick",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "198"
+  },
+  {
+    "name": "Needham",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "199"
+  },
+  {
+    "name": "Norwood",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "220"
+  },
+  {
+    "name": "Reading",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "246"
+  },
+  {
+    "name": "Sherborn",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "269"
+  },
+  {
+    "name": "Sudbury",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "288"
+  },
+  {
+    "name": "Wayland",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "315"
+  },
+  {
+    "name": "Wellesley",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "317"
+  },
+  {
+    "name": "Weston",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "333"
+  },
+  {
+    "name": "Westwood",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 12,
+    "datawrapper_code": "335"
+  },
+  {
+    "name": "Wilmington",
+    "municipal_type": "Town",
+    "county": "Middlesex",
+    "region": 12,
+    "datawrapper_code": "342"
+  },
+  {
+    "name": "Abington",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 13,
+    "datawrapper_code": "1"
+  },
+  {
+    "name": "Foxborough",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "99"
+  },
+  {
+    "name": "Avon",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "18"
+  },
+  {
+    "name": "Braintree",
+    "municipal_type": "City",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "40"
+  },
+  {
+    "name": "Canton",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "50"
+  },
+  {
+    "name": "Cohasset",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "65"
+  },
+  {
+    "name": "Franklin",
+    "municipal_type": "City",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "101"
+  },
+  {
+    "name": "Hingham",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 13,
+    "datawrapper_code": "131"
+  },
+  {
+    "name": "Holbrook",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "133"
+  },
+  {
+    "name": "Hull",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 13,
+    "datawrapper_code": "142"
+  },
+  {
+    "name": "Medway",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "177"
+  },
+  {
+    "name": "Millis",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "187"
+  },
+  {
+    "name": "Norfolk",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "208"
+  },
+  {
+    "name": "Norwell",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 13,
+    "datawrapper_code": "219"
+  },
+  {
+    "name": "Randolph",
+    "municipal_type": "City",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "244"
+  },
+  {
+    "name": "Rockland",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 13,
+    "datawrapper_code": "251"
+  },
+  {
+    "name": "Scituate",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 13,
+    "datawrapper_code": "264"
+  },
+  {
+    "name": "Sharon",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "266"
+  },
+  {
+    "name": "Stoughton",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "285"
+  },
+  {
+    "name": "Walpole",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "307"
+  },
+  {
+    "name": "Weymouth",
+    "municipal_type": "City",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "336"
+  },
+  {
+    "name": "Wrentham",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 13,
+    "datawrapper_code": "350"
+  },
+  {
+    "name": "Acushnet",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "3"
+  },
+  {
+    "name": "Attleboro",
+    "municipal_type": "City",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "16"
+  },
+  {
+    "name": "Berkley",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "27"
+  },
+  {
+    "name": "Dartmouth",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "72"
+  },
+  {
+    "name": "Dighton",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "76"
+  },
+  {
+    "name": "Easton",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "88"
+  },
+  {
+    "name": "Fairhaven",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "94"
+  },
+  {
+    "name": "Fall River",
+    "municipal_type": "City",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "95"
+  },
+  {
+    "name": "Freetown",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "102"
+  },
+  {
+    "name": "Mansfield",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "167"
+  },
+  {
+    "name": "New Bedford",
+    "municipal_type": "City",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "201"
+  },
+  {
+    "name": "North Attleborough",
+    "municipal_type": "City",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "211"
+  },
+  {
+    "name": "Norton",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "218"
+  },
+  {
+    "name": "Plainville",
+    "municipal_type": "Town",
+    "county": "Norfolk",
+    "region": 14,
+    "datawrapper_code": "238"
+  },
+  {
+    "name": "Rehoboth",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "247"
+  },
+  {
+    "name": "Seekonk",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "265"
+  },
+  {
+    "name": "Somerset",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "273"
+  },
+  {
+    "name": "Swansea",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "292"
+  },
+  {
+    "name": "Taunton",
+    "municipal_type": "City",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "293"
+  },
+  {
+    "name": "Westport",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "334"
+  },
+  {
+    "name": "Raynham",
+    "municipal_type": "Town",
+    "county": "Bristol",
+    "region": 14,
+    "datawrapper_code": "245"
+  },
+  {
+    "name": "Bridgewater",
+    "municipal_type": "City",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "42"
+  },
+  {
+    "name": "Brockton",
+    "municipal_type": "City",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "44"
+  },
+  {
+    "name": "Carver",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "52"
+  },
+  {
+    "name": "Duxbury",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "82"
+  },
+  {
+    "name": "East Bridgewater",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "83"
+  },
+  {
+    "name": "Halifax",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "118"
+  },
+  {
+    "name": "Hanover",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "122"
+  },
+  {
+    "name": "Hanson",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "123"
+  },
+  {
+    "name": "Kingston",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "145"
+  },
+  {
+    "name": "Lakeville",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "146"
+  },
+  {
+    "name": "Marion",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "169"
+  },
+  {
+    "name": "Mattapoisett",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "173"
+  },
+  {
+    "name": "Middleborough",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "182"
+  },
+  {
+    "name": "Pembroke",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "231"
+  },
+  {
+    "name": "Plymouth",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "239"
+  },
+  {
+    "name": "Plympton",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "240"
+  },
+  {
+    "name": "Rochester",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "250"
+  },
+  {
+    "name": "Wareham",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "310"
+  },
+  {
+    "name": "West Bridgewater",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "322"
+  },
+  {
+    "name": "Whitman",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "338"
+  },
+  {
+    "name": "Marshfield",
+    "municipal_type": "Town",
+    "county": "Plymouth",
+    "region": 15,
+    "datawrapper_code": "171"
+  },
+  {
+    "name": "Aquinnah",
+    "municipal_type": "Town",
+    "county": "Dukes",
+    "region": 16,
+    "datawrapper_code": "104"
+  },
+  {
+    "name": "Barnstable",
+    "municipal_type": "City",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "20"
+  },
+  {
+    "name": "Bourne",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "36"
+  },
+  {
+    "name": "Brewster",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "41"
+  },
+  {
+    "name": "Chatham",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "55"
+  },
+  {
+    "name": "Chilmark",
+    "municipal_type": "Town",
+    "county": "Dukes",
+    "region": 16,
+    "datawrapper_code": "62"
+  },
+  {
+    "name": "Dennis",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "75"
+  },
+  {
+    "name": "Eastham",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "86"
+  },
+  {
+    "name": "Edgartown",
+    "municipal_type": "Town",
+    "county": "Dukes",
+    "region": 16,
+    "datawrapper_code": "89"
+  },
+  {
+    "name": "Falmouth",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "96"
+  },
+  {
+    "name": "Gosnold",
+    "municipal_type": "Town",
+    "county": "Dukes",
+    "region": 16,
+    "datawrapper_code": "109"
+  },
+  {
+    "name": "Harwich",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "126"
+  },
+  {
+    "name": "Mashpee",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "172"
+  },
+  {
+    "name": "Nantucket",
+    "municipal_type": "Town",
+    "county": "Nantucket",
+    "region": 16,
+    "datawrapper_code": "197"
+  },
+  {
+    "name": "Oak Bluffs",
+    "municipal_type": "Town",
+    "county": "Dukes",
+    "region": 16,
+    "datawrapper_code": "221"
+  },
+  {
+    "name": "Orleans",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "224"
+  },
+  {
+    "name": "Provincetown",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "242"
+  },
+  {
+    "name": "Sandwich",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "261"
+  },
+  {
+    "name": "Tisbury",
+    "municipal_type": "Town",
+    "county": "Dukes",
+    "region": 16,
+    "datawrapper_code": "296"
+  },
+  {
+    "name": "Truro",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "300"
+  },
+  {
+    "name": "Wellfleet",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "318"
+  },
+  {
+    "name": "West Tisbury",
+    "municipal_type": "Town",
+    "county": "Dukes",
+    "region": 16,
+    "datawrapper_code": "327"
+  },
+  {
+    "name": "Yarmouth",
+    "municipal_type": "Town",
+    "county": "Barnstable",
+    "region": 16,
+    "datawrapper_code": "351"
+  }
+]

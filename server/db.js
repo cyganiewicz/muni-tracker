@@ -13,6 +13,19 @@ db.pragma("foreign_keys = ON");
 const schema = fs.readFileSync(path.join(__dirname, "schema.sql"), "utf8");
 db.exec(schema);
 
+// Lightweight migration for columns added after a database already exists
+// (schema.sql's CREATE TABLE IF NOT EXISTS only applies to brand-new
+// tables, so an already-deployed database needs this to pick up new
+// columns without losing any data).
+function ensureColumn(table, column, ddl) {
+  const cols = db.prepare(`PRAGMA table_info(${table})`).all().map((c) => c.name);
+  if (!cols.includes(column)) {
+    db.exec(`ALTER TABLE ${table} ADD COLUMN ${ddl}`);
+    console.log(`Migration: added ${table}.${column}`);
+  }
+}
+ensureColumn("communities", "datawrapper_code", "datawrapper_code TEXT");
+
 function isSeeded() {
   const row = db.prepare("SELECT value FROM app_meta WHERE key = 'seeded'").get();
   return !!row;
@@ -104,6 +117,46 @@ function seedIfEmpty() {
   console.log(`Seeded ${seed.clients.length} clients across ${seed.communities.length} communities into cycle "FY26".`);
 }
 
+// Keeps the full 351-town Massachusetts municipality reference (name,
+// municipal type, county, territory/region, and the Datawrapper basemap
+// code used to match each town on the map) in sync with
+// migration/ma_towns_canonical.json. Runs on every boot, not just first
+// seed, so an already-deployed database picks up fixes/additions here
+// without anyone re-running the Excel migration -- it only ever touches
+// the `communities` table (upsert by name), never clients or reviews.
+function syncCanonicalTowns() {
+  const canonicalPath = path.join(__dirname, "..", "migration", "ma_towns_canonical.json");
+  if (!fs.existsSync(canonicalPath)) return;
+
+  const towns = JSON.parse(fs.readFileSync(canonicalPath, "utf8"));
+  const existing = db.prepare("SELECT id, name FROM communities").all();
+  const existingByName = new Map(existing.map((c) => [c.name, c.id]));
+
+  const update = db.prepare(
+    "UPDATE communities SET municipal_type = ?, county = ?, region_id = ?, datawrapper_code = ? WHERE id = ?"
+  );
+  const insert = db.prepare(
+    "INSERT INTO communities (name, municipal_type, county, region_id, status, datawrapper_code) VALUES (?, ?, ?, ?, 'prospect', ?)"
+  );
+
+  let added = 0, updated = 0;
+  const tx = db.transaction(() => {
+    for (const t of towns) {
+      const id = existingByName.get(t.name);
+      if (id) {
+        update.run(t.municipal_type, t.county, t.region, t.datawrapper_code, id);
+        updated++;
+      } else {
+        insert.run(t.name, t.municipal_type, t.county, t.region, t.datawrapper_code);
+        added++;
+      }
+    }
+  });
+  tx();
+  console.log(`Synced canonical MA town list: ${towns.length} towns (${added} added, ${updated} updated).`);
+}
+
 seedIfEmpty();
+syncCanonicalTowns();
 
 module.exports = db;

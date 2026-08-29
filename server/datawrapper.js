@@ -11,10 +11,15 @@
  * testing) and callers get { skipped: true } back.
  *
  * IMPORTANT: this ships with a *reasonable guess* at the CSV columns
- * (one row per CLIENT, including its community and region). Open the
- * existing Datawrapper chart's "Data" tab once after first deploy and
- * confirm the column names line up with what the map is keyed on --
- * adjust buildCsv() below if not.
+ * (see buildCsv() below). Open the existing Datawrapper chart's "Data"
+ * tab once after first deploy and confirm the column names line up with
+ * what the map is keyed on -- adjust buildCsv() below if not.
+ *
+ * The `datawrapper_code` column is populated from
+ * migration/ma_towns_canonical.json, matched from a Datawrapper-exported
+ * key file for Massachusetts municipalities -- if the map uses Datawrapper's
+ * built-in MA basemap, this is very likely the actual id it matches rows on
+ * (more reliable than matching by town name spelling).
  */
 
 const DW_API = "https://api.datawrapper.de/v3";
@@ -24,18 +29,21 @@ function getCurrentCycleId(db) {
   return row ? row.id : null;
 }
 
-// One row per active client -- each client carries its own community,
-// county, municipal type, region/territory, and advisor, plus this
-// cycle's review status.
+// One row per active client, PLUS one row for every community that has no
+// active client at all (so all 351 MA towns are represented on the map,
+// not just the ones we currently have a client in -- a prospect town
+// should still show up, just with no client/done data).
 function buildCsv(db, cycleId) {
   const cid = cycleId || getCurrentCycleId(db);
   const rows = db.prepare(`
     SELECT
       cl.household_name,
       c.name AS community,
+      c.datawrapper_code,
       cl.mailing_city,
       c.municipal_type,
       c.county,
+      c.status AS community_status,
       r.id AS region,
       r.label AS region_label,
       r.advisor,
@@ -44,24 +52,27 @@ function buildCsv(db, cycleId) {
       rv.last_review_date,
       rv.next_review_text,
       rv.next_review_date
-    FROM clients cl
-    LEFT JOIN communities c ON c.id = cl.community_id
-    LEFT JOIN regions r ON r.id = cl.region_id
+    FROM communities c
+    LEFT JOIN regions r ON r.id = c.region_id
+    LEFT JOIN clients cl ON cl.community_id = c.id AND cl.active = 1
     LEFT JOIN reviews rv ON rv.client_id = cl.id AND rv.cycle_id = ?
-    WHERE cl.active = 1
     ORDER BY c.name, cl.household_name
   `).all(cid);
 
   const header = [
-    "household_name", "community", "mailing_city", "municipal_type", "county",
-    "region", "region_label", "advisor", "done",
+    "household_name", "community", "datawrapper_code", "mailing_city", "municipal_type", "county",
+    "region", "region_label", "advisor", "has_client", "done",
     "last_review", "next_review",
   ];
   const lines = [header.join(",")];
   for (const row of rows) {
+    const hasClient = !!row.household_name;
     const vals = [
-      row.household_name, row.community || "", row.mailing_city || "", row.municipal_type || "", row.county || "",
-      row.region || "", row.region_label || "", row.advisor || "", row.done ? "Yes" : "No",
+      row.household_name || "", row.community || "", row.datawrapper_code || "", row.mailing_city || "",
+      row.municipal_type || "", row.county || "",
+      row.region || "", row.region_label || "", row.advisor || "",
+      hasClient ? "Yes" : "No",
+      hasClient ? (row.done ? "Yes" : "No") : "",
       row.last_review_text || row.last_review_date || "",
       row.next_review_text || row.next_review_date || "",
     ].map((v) => {

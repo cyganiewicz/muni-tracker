@@ -117,6 +117,23 @@ Community columns shifted when it was manually moved between tabs).
 If you find something migrated wrong, it's much easier to just fix it in
 the app itself (each field saves independently) than to re-run the import.
 
+## The full Massachusetts town list
+
+The **Community/Town** field (when adding or editing a client) offers all
+351 Massachusetts cities and towns as autocomplete suggestions — not just
+the ones that already have a client — each pre-linked to the correct
+territory/region. Picking a known town auto-assigns its territory for you;
+you don't need to know or look up which region number a town belongs to.
+
+This list lives in `migration/ma_towns_canonical.json` (name, municipal
+type, county, region, and a Datawrapper matching code — see below) and is
+kept in sync with the database automatically **on every server start**,
+not just the first one — so if that file is ever updated (a town added, a
+territory reassigned) and redeployed, existing client data is untouched;
+only the reference town list refreshes. Source data:
+`migration/datawrapper_ma_town_codes.csv` supplied the per-town Datawrapper
+matching codes; the town/type/county/region list itself came from you.
+
 ## Datawrapper auto-sync
 
 Set two environment variables to turn this on:
@@ -130,21 +147,24 @@ Once both are set, every client edit pushes an updated dataset to that
 chart automatically (batched — it waits 5 seconds after the last edit
 before pushing, so a flurry of changes becomes one update, not dozens).
 
-The export is **one row per client** (not aggregated by town), so every
-household/entity shows up on the map individually, each carrying its own
-community, mailing city, county, municipal type, region/territory, advisor,
-done status, and last/next review. Columns: `household_name, community,
-mailing_city, municipal_type, county, region, region_label, advisor, done,
+The export has **one row for every one of the 351 MA towns** — a town with
+one or more clients gets one row per client (so multiple client accounts
+in the same town, like a Town Hall and a separate water district, each
+show up), and a town with zero clients still gets a single placeholder row
+(`has_client` = No) so it appears on the map too instead of being blank.
+Columns: `household_name, community, datawrapper_code, mailing_city,
+municipal_type, county, region, region_label, advisor, has_client, done,
 last_review, next_review`.
 
-**One thing to check yourself:** I built the export with a reasonable set
-of columns but I haven't seen your live Datawrapper chart's own data table,
-so I can't guarantee the column names match exactly what it's keyed on
-(especially whichever column it uses to match each row to a place on the
-map — likely `community`). Open your chart's "Data" tab once after the
-first sync and confirm the columns line up — if not, `server/datawrapper.js`'s
-`buildCsv()` function is where to adjust them. You can always fetch
-`/api/export/datawrapper.csv` to see exactly what gets sent.
+`datawrapper_code` is each town's id from the file you provided
+(`migration/datawrapper_ma_town_codes.csv`) — since Datawrapper itself
+generated that file, it's very likely the actual key its Massachusetts
+basemap matches rows on, which is more reliable than matching by town
+name spelling. **One thing to check yourself:** I haven't seen your live
+chart's own data table, so confirm in Datawrapper's "Data" tab that it's
+actually matching on this column (or on `community`, or something else)
+— adjust `server/datawrapper.js`'s `buildCsv()` if not. You can always
+fetch `/api/export/datawrapper.csv` to see exactly what gets sent.
 
 ## Admin panel
 

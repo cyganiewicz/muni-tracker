@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS communities (
   county TEXT,
   region_id INTEGER REFERENCES regions(id),
   status TEXT DEFAULT 'client',  -- client / prospect
+  datawrapper_code TEXT,         -- this town's id in Datawrapper's MA-municipalities basemap, for map matching
   UNIQUE(name)
 );
 

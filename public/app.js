@@ -312,6 +312,16 @@
   attachAutocomplete($("#f_community"), () => state.communities.map((c) => c.name), { allowNew: true });
   attachAutocomplete($("#f_mailing_city"), () => state.mailingCities, { allowNew: true });
 
+  // Every MA town has one correct territory -- once the rep picks a known
+  // community, auto-assign its region instead of making them look it up.
+  $("#f_community").addEventListener("change", () => {
+    const name = $("#f_community").value.trim().toLowerCase();
+    const match = state.communities.find((c) => c.name.toLowerCase() === name);
+    if (match && match.region_id) {
+      $("#f_region_id").value = match.region_id;
+    }
+  });
+
   // ---------------- client modal ----------------
   let editing = null;
 
