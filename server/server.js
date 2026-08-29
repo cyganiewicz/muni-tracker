@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const db = require("./db");
-const { buildCsv, syncToDatawrapper, getCurrentCycleId } = require("./datawrapper");
+const { buildTownCsv, buildClientCsv, syncToDatawrapper, getCurrentCycleId } = require("./datawrapper");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -541,10 +541,20 @@ app.get("/api/dashboard", (req, res) => {
 });
 
 // ---------- export / datawrapper ----------
+// One row per town (all 351) -- this is exactly what gets pushed to the
+// live Datawrapper map, so downloading this shows exactly what it'll see.
 app.get("/api/export/datawrapper.csv", (req, res) => {
-  const csv = buildCsv(db, req.query.cycle_id ? Number(req.query.cycle_id) : undefined);
+  const csv = buildTownCsv(db, req.query.cycle_id ? Number(req.query.cycle_id) : undefined);
   res.setHeader("Content-Type", "text/csv");
   res.setHeader("Content-Disposition", "attachment; filename=datawrapper-export.csv");
+  res.send(csv);
+});
+
+// One row per client -- a flat detail/audit export, not what's synced to the map.
+app.get("/api/export/clients.csv", (req, res) => {
+  const csv = buildClientCsv(db, req.query.cycle_id ? Number(req.query.cycle_id) : undefined);
+  res.setHeader("Content-Type", "text/csv");
+  res.setHeader("Content-Disposition", "attachment; filename=clients-export.csv");
   res.send(csv);
 });
 

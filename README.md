@@ -147,14 +147,53 @@ Once both are set, every client edit pushes an updated dataset to that
 chart automatically (batched — it waits 5 seconds after the last edit
 before pushing, so a flurry of changes becomes one update, not dozens).
 
-The export has **one row for every one of the 351 MA towns** — a town with
-one or more clients gets one row per client (so multiple client accounts
-in the same town, like a Town Hall and a separate water district, each
-show up), and a town with zero clients still gets a single placeholder row
-(`has_client` = No) so it appears on the map too instead of being blank.
-Columns: `household_name, community, datawrapper_code, mailing_city,
-municipal_type, county, region, region_label, advisor, has_client, done,
-last_review, next_review`.
+### Two exports, for two different jobs
+
+There are actually two CSV exports now, because they serve different
+purposes:
+
+- **Map export** (`/api/export/datawrapper.csv`, the "Export map CSV"
+  button) — this is exactly what gets pushed to the live map. It has
+  **one row per town, for all 351 MA towns, no more and no fewer.** A town
+  with several clients (say, a Town Hall and a separate water/broadband
+  district) does **not** get multiple rows — it gets one row whose
+  `household_name` column contains every client's name in that town,
+  joined with `<br>` between them. A town with zero clients gets one row
+  too, with an empty `household_name` and `client_count` = 0, so it still
+  appears on the map instead of being blank. Columns: `community,
+  datawrapper_code, municipal_type, county, region, region_label, advisor,
+  client_count, done_count, pct_done, household_name,
+  next_upcoming_review`.
+
+- **Client list export** (`/api/export/clients.csv`, the "Export client
+  list CSV" button) — the flat, one-row-per-client detail/audit export
+  (342 rows). This is *not* what's synced to the map; it's just a plain
+  data dump for when you want to see every client's own row, including
+  `mailing_city`. Columns: `household_name, community, datawrapper_code,
+  mailing_city, municipal_type, county, region, region_label, advisor,
+  done, last_review, next_review`.
+
+**Why the split:** Datawrapper's tooltip templates (the `{{column}}`
+syntax you use when annotating the map) do simple substitution from
+whichever single CSV row matched that map area — they don't loop over
+multiple rows that happen to share the same town. If the map export had
+one row per client (like it briefly did), a town with several clients
+would only ever bind to one of those rows, and a tooltip referencing
+`{{household_name}}` would silently show just one client and drop the
+rest. Pre-joining the names into one cell, one row per town, is what
+makes a tooltip like
+
+```
+Region: {{region}} <hr>
+<b>Clients:</b>
+{{ household_name }}<br>
+```
+
+correctly list *every* client in that town, each on its own line,
+because Datawrapper tooltips render basic HTML and `<br>` is already baked
+into the cell. You don't need to change that template — `household_name`
+is still the column name, it just now holds a multi-line value when a
+town has more than one client.
 
 `datawrapper_code` is each town's id from the file you provided
 (`migration/datawrapper_ma_town_codes.csv`) — since Datawrapper itself
@@ -163,8 +202,9 @@ basemap matches rows on, which is more reliable than matching by town
 name spelling. **One thing to check yourself:** I haven't seen your live
 chart's own data table, so confirm in Datawrapper's "Data" tab that it's
 actually matching on this column (or on `community`, or something else)
-— adjust `server/datawrapper.js`'s `buildCsv()` if not. You can always
-fetch `/api/export/datawrapper.csv` to see exactly what gets sent.
+— adjust `server/datawrapper.js`'s `buildTownCsv()` if not. You can always
+fetch `/api/export/datawrapper.csv` to see exactly what gets sent to the
+map, or `/api/export/clients.csv` for the per-client detail list.
 
 ## Admin panel
 

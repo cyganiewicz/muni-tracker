@@ -473,6 +473,7 @@
 
   // ---------------- export / sync ----------------
   $("#exportCsvBtn").addEventListener("click", () => window.open("/api/export/datawrapper.csv", "_blank"));
+  $("#exportClientsCsvBtn").addEventListener("click", () => window.open("/api/export/clients.csv", "_blank"));
 
   $("#syncDwBtn").addEventListener("click", async () => {
     $("#syncStatus").textContent = "Syncing…";
