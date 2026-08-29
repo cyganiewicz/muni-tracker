@@ -132,9 +132,10 @@ before pushing, so a flurry of changes becomes one update, not dozens).
 
 The export is **one row per client** (not aggregated by town), so every
 household/entity shows up on the map individually, each carrying its own
-community, county, municipal type, region/territory, advisor, done status,
-and last/next review. Columns: `household_name, community, municipal_type,
-county, region, region_label, advisor, done, last_review, next_review`.
+community, mailing city, county, municipal type, region/territory, advisor,
+done status, and last/next review. Columns: `household_name, community,
+mailing_city, municipal_type, county, region, region_label, advisor, done,
+last_review, next_review`.
 
 **One thing to check yourself:** I built the export with a reasonable set
 of columns but I haven't seen your live Datawrapper chart's own data table,

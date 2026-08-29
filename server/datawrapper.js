@@ -33,6 +33,7 @@ function buildCsv(db, cycleId) {
     SELECT
       cl.household_name,
       c.name AS community,
+      cl.mailing_city,
       c.municipal_type,
       c.county,
       r.id AS region,
@@ -52,14 +53,14 @@ function buildCsv(db, cycleId) {
   `).all(cid);
 
   const header = [
-    "household_name", "community", "municipal_type", "county",
+    "household_name", "community", "mailing_city", "municipal_type", "county",
     "region", "region_label", "advisor", "done",
     "last_review", "next_review",
   ];
   const lines = [header.join(",")];
   for (const row of rows) {
     const vals = [
-      row.household_name, row.community || "", row.municipal_type || "", row.county || "",
+      row.household_name, row.community || "", row.mailing_city || "", row.municipal_type || "", row.county || "",
       row.region || "", row.region_label || "", row.advisor || "", row.done ? "Yes" : "No",
       row.last_review_text || row.last_review_date || "",
       row.next_review_text || row.next_review_date || "",
