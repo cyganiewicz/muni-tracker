@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Municipal Client Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <h1>Municipal Client Tracker</h1>
+      <p class="muted">Enter the team password and your name to continue.</p>
+      <form id="loginForm">
+        <label>Your name
+          <select id="loginName" required></select>
+        </label>
+        <label>Team password
+          <input type="password" id="loginPassword" required autocomplete="current-password" />
+        </label>
+        <button type="submit">Enter</button>
+        <p id="loginError" class="error" hidden></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="app" hidden>
+    <header class="topbar">
+      <div class="brand">Municipal Client Tracker</div>
+      <nav class="tabs">
+        <button class="tabbtn active" data-view="clients">Clients</button>
+        <button class="tabbtn" data-view="dashboard">Dashboard</button>
+        <button class="tabbtn" data-view="admin" id="adminTabBtn" hidden>Admin</button>
+      </nav>
+      <div class="who">
+        <span id="cycleBadge" class="cycle-badge"></span>
+        <span id="whoName"></span>
+        <button id="adminUnlockBtn" class="linklike">Admin sign-in</button>
+        <button id="adminLockBtn" class="linklike" hidden>Exit admin</button>
+        <button id="logoutBtn" class="linklike">Sign out</button>
+      </div>
+    </header>
+
+    <!-- CLIENTS VIEW -->
+    <section id="view-clients" class="view">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search household, town, or notes…" />
+        <select id="filterRegion"><option value="">All regions</option></select>
+        <select id="filterAdvisor"><option value="">All advisors</option></select>
+        <select id="filterStatus">
+          <option value="">All statuses</option>
+          <option value="pending">Pending</option>
+          <option value="done">Done</option>
+        </select>
+        <button id="addClientBtn" class="primary">+ Add client</button>
+        <button id="exportCsvBtn">Export CSV</button>
+        <button id="syncDwBtn">Sync map</button>
+        <span id="syncStatus" class="muted small"></span>
+      </div>
+      <div id="clientCount" class="muted small"></div>
+      <div id="clientList" class="client-list"></div>
+    </section>
+
+    <!-- DASHBOARD VIEW -->
+    <section id="view-dashboard" class="view" hidden>
+      <div class="dash-grid">
+        <div class="dash-card total-card">
+          <div class="dash-num" id="dashTotalPct">–</div>
+          <div class="dash-label">Overall complete (<span id="dashTotalDone">0</span> of <span id="dashTotalAll">0</span>)</div>
+        </div>
+        <div class="dash-card">
+          <h3>By advisor</h3>
+          <div id="dashByAdvisor" class="bar-list"></div>
+        </div>
+        <div class="dash-card">
+          <h3>By territory</h3>
+          <div id="dashByRegion" class="bar-list small"></div>
+        </div>
+        <div class="dash-card wide" id="mapCard" hidden>
+          <h3>Map</h3>
+          <div class="map-embed"><iframe id="datawrapperFrame" title="Client map" frameborder="0" scrolling="no"></iframe></div>
+        </div>
+        <div class="dash-card wide">
+          <h3>Upcoming reviews</h3>
+          <table class="upcoming-table">
+            <thead><tr><th>Date</th><th>Client</th><th>Town</th><th>Advisor</th></tr></thead>
+            <tbody id="dashUpcoming"></tbody>
+          </table>
+        </div>
+        <div class="dash-card wide">
+          <h3>Review cycle history</h3>
+          <table class="upcoming-table">
+            <thead><tr><th>Cycle</th><th>Started</th><th>Closed</th><th>Done</th></tr></thead>
+            <tbody id="cycleHistory"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN VIEW -->
+    <section id="view-admin" class="view" hidden>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <h3>Reps</h3>
+          <div id="adminTeamList" class="admin-list"></div>
+          <form id="addTeamMemberForm" class="inline-form">
+            <input id="newTeamMemberName" placeholder="New rep name" required />
+            <button type="submit">Add</button>
+          </form>
+        </div>
+
+        <div class="dash-card">
+          <h3>Territories</h3>
+          <div id="adminRegionList" class="admin-list"></div>
+          <form id="addRegionForm" class="inline-form">
+            <input id="newRegionLabel" placeholder="Territory label (e.g. 17-New)" required />
+            <input id="newRegionAdvisor" placeholder="Advisor" required />
+            <button type="submit">Add</button>
+          </form>
+        </div>
+
+        <div class="dash-card wide">
+          <h3>Review cycles</h3>
+          <p class="muted">Starting a new cycle closes the current one (its data stays exactly as-is for history) and creates a fresh, unchecked review for every active client. Last/next review dates carry forward automatically.</p>
+          <div id="adminCurrentCycle" class="muted"></div>
+          <form id="newCycleForm" class="inline-form">
+            <input id="newCycleLabel" placeholder='New cycle label (e.g. "Q2 2027")' required />
+            <button type="submit" class="danger-btn">Start new cycle</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ADMIN UNLOCK MODAL -->
+  <div id="adminUnlockBackdrop" class="modal-backdrop" hidden>
+    <div class="modal narrow">
+      <div class="modal-head"><h2>Admin sign-in</h2><button id="adminUnlockClose" class="linklike">✕</button></div>
+      <form id="adminUnlockForm">
+        <label>Admin password
+          <input type="password" id="adminUnlockPassword" required />
+        </label>
+        <div class="modal-actions">
+          <div class="spacer"></div>
+          <button type="button" id="adminUnlockCancel">Cancel</button>
+          <button type="submit" class="primary">Unlock</button>
+        </div>
+        <p id="adminUnlockError" class="error" hidden></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- CLIENT EDIT MODAL -->
+  <div id="modalBackdrop" class="modal-backdrop" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="modalTitle">Client</h2>
+        <button id="modalClose" class="linklike">✕</button>
+      </div>
+      <form id="clientForm">
+        <input type="hidden" id="f_id" />
+        <input type="hidden" id="f_version" />
+        <input type="hidden" id="f_review_id" />
+        <input type="hidden" id="f_review_version" />
+
+        <div class="grid2">
+          <label>Household / entity name
+            <input id="f_household_name" required />
+          </label>
+          <label>Region / territory
+            <select id="f_region_id" required></select>
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label class="ac-wrap">Community / town
+            <input id="f_community" autocomplete="off" placeholder="Start typing…" />
+          </label>
+          <label class="ac-wrap">Mailing city
+            <input id="f_mailing_city" autocomplete="off" placeholder="Start typing…" />
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label>Last review (text)
+            <input id="f_last_review_text" placeholder="e.g. 5/13 @ 3:30" />
+          </label>
+          <label>Next review (text)
+            <input id="f_next_review_text" placeholder="e.g. 9/17 @ 11:30 (lunch)" />
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label>Material / copy count
+            <input id="f_material_count" type="number" min="0" />
+          </label>
+          <label>Assigned rep for this review
+            <input id="f_assigned_rep_note" placeholder="who's actually running it" />
+          </label>
+        </div>
+
+        <label>Coverage note <span class="muted small">(persists across cycles)</span>
+          <input id="f_coverage_note" placeholder="e.g. 2 advisors, needs Kathleen" />
+        </label>
+
+        <label>Client notes <span class="muted small">(persists across cycles)</span>
+          <textarea id="f_special_notes" rows="2"></textarea>
+        </label>
+
+        <label>This cycle's notes
+          <textarea id="f_review_notes" rows="2" placeholder="What happened this review, action items…"></textarea>
+        </label>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="f_done" /> Review complete
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" id="deleteClientBtn" class="danger-link">Remove client</button>
+          <div class="spacer"></div>
+          <button type="button" id="cancelBtn">Cancel</button>
+          <button type="submit" class="primary">Save</button>
+        </div>
+        <p id="formError" class="error" hidden></p>
+      </form>
+
+      <details class="history-details">
+        <summary>Change history</summary>
+        <div id="historyList" class="history-list"></div>
+      </details>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
