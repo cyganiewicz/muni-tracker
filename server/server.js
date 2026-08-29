@@ -515,15 +515,20 @@ app.get("/api/dashboard", (req, res) => {
 
   const totals = cycleStats(cycleId);
 
+  // "Upcoming" means strictly today-or-later -- a next_review_date that's
+  // already passed shouldn't show up here even if it's still unchecked
+  // (that's an overdue item, not an upcoming one).
+  const todayIso = new Date().toISOString().slice(0, 10);
   const upcoming = db.prepare(`
     SELECT cl.id, cl.household_name, c.name AS community_name, rv.next_review_date, rv.next_review_text, r.advisor
     FROM reviews rv
     JOIN clients cl ON cl.id = rv.client_id
     LEFT JOIN communities c ON c.id = cl.community_id
     JOIN regions r ON r.id = cl.region_id
-    WHERE rv.cycle_id = ? AND cl.active = 1 AND rv.done = 0 AND rv.next_review_date IS NOT NULL
+    WHERE rv.cycle_id = ? AND cl.active = 1 AND rv.done = 0
+      AND rv.next_review_date IS NOT NULL AND rv.next_review_date >= ?
     ORDER BY rv.next_review_date ASC LIMIT 15
-  `).all(cycleId);
+  `).all(cycleId, todayIso);
 
   const cycle = db.prepare("SELECT * FROM cycles WHERE id = ?").get(cycleId);
 

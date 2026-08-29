@@ -33,6 +33,17 @@ What's included:
 - Real autocomplete on the Community/Town and Mailing City fields when
   adding or editing a client, so spelling stays consistent for the map.
 - An optional embedded view of your Datawrapper map right on the Dashboard.
+- Bartholomew & Company branding — full logo on the sign-in screen, the "B"
+  mark in the app header.
+
+## Logo files
+
+`public/img/bartco-black.png` (full logo) and `public/img/bartco-black-B.png`
+(the "B" mark) need to live at exactly those paths for the app to find them.
+They're already included in this delivery — if you'd separately added your
+own copies elsewhere in the repo, either delete those or just make sure the
+ones at `public/img/` are the ones you want, since that's the path the code
+references.
 
 ## How it's built
 
@@ -79,16 +90,19 @@ get wiped on redeploy):
 3. Once deployed, open the service's **Variables** tab and add everything
    from `.env.example` (at minimum `APP_PASSWORD`, `SESSION_SECRET`,
    `TEAM_NAMES`).
-4. Add a **Volume**: Settings → Volumes → mount it at `/data`, then set the
-   variable `DATA_DIR=/data`. This is the step that makes your data
-   survive redeploys — don't skip it.
+4. Add a **Volume**: on the service, go to Settings → Volumes → mount it at
+   `/app/data` (that path is already baked into the Dockerfile as the
+   default `DATA_DIR`, so you don't need to set that variable yourself —
+   just make sure the volume's mount path matches). This is the step that
+   makes your data survive redeploys — don't skip it.
 5. Railway gives you a public URL (e.g. `yourapp.up.railway.app`) — that's
    the link your wife's team uses. You can attach a custom domain later
    under Settings → Domains if you want something nicer.
 
 **Render** works the same way if you'd rather use that (Web Service +
-a Disk mounted at `/data`, same env vars). A `Dockerfile` is included so
-either platform (or any other that runs Docker) will work without changes.
+a Disk mounted at `/app/data`, same env vars). A `Dockerfile` is included
+so either platform (or any other that runs Docker) will work without
+changes.
 
 ## Data migration (already done)
 
@@ -116,14 +130,20 @@ Once both are set, every client edit pushes an updated dataset to that
 chart automatically (batched — it waits 5 seconds after the last edit
 before pushing, so a flurry of changes becomes one update, not dozens).
 
+The export is **one row per client** (not aggregated by town), so every
+household/entity shows up on the map individually, each carrying its own
+community, county, municipal type, region/territory, advisor, done status,
+and last/next review. Columns: `household_name, community, municipal_type,
+county, region, region_label, advisor, done, last_review, next_review`.
+
 **One thing to check yourself:** I built the export with a reasonable set
-of columns (community, county, advisor, region, client count, done count,
-% done) but I haven't seen your live Datawrapper chart's own data table, so
-I can't guarantee the column names match exactly what it's keyed on. Open
-your chart's "Data" tab once after the first sync and confirm the columns
-line up — if not, `server/datawrapper.js`'s `buildCsv()` function is where
-to adjust them. You can always fetch `/api/export/datawrapper.csv` to see
-exactly what gets sent.
+of columns but I haven't seen your live Datawrapper chart's own data table,
+so I can't guarantee the column names match exactly what it's keyed on
+(especially whichever column it uses to match each row to a place on the
+map — likely `community`). Open your chart's "Data" tab once after the
+first sync and confirm the columns line up — if not, `server/datawrapper.js`'s
+`buildCsv()` function is where to adjust them. You can always fetch
+`/api/export/datawrapper.csv` to see exactly what gets sent.
 
 ## Admin panel
 

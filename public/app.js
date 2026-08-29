@@ -224,9 +224,17 @@
     });
   }
 
+  function formatNextReview(rv) {
+    if (!rv) return "—";
+    const parts = [];
+    if (rv.next_review_date) parts.push(rv.next_review_date);
+    if (rv.next_review_text) parts.push(rv.next_review_text);
+    return parts.length ? parts.join(" — ") : "—";
+  }
+
   function clientRowHtml(r) {
     const rv = r.review || {};
-    const nextDate = rv.next_review_text || rv.next_review_date || "—";
+    const nextDate = formatNextReview(rv);
     const notes = r.special_notes || rv.review_notes || "";
     const done = !!rv.done;
     return `
@@ -327,6 +335,7 @@
       $("#f_community").value = "";
       $("#f_mailing_city").value = "";
       $("#f_last_review_text").value = "";
+      $("#f_next_review_date").value = "";
       $("#f_next_review_text").value = "";
       $("#f_material_count").value = "";
       $("#f_assigned_rep_note").value = "";
@@ -345,6 +354,7 @@
       $("#f_community").value = row.community_name || "";
       $("#f_mailing_city").value = row.mailing_city || "";
       $("#f_last_review_text").value = rv.last_review_text || "";
+      $("#f_next_review_date").value = rv.next_review_date || "";
       $("#f_next_review_text").value = rv.next_review_text || "";
       $("#f_material_count").value = rv.material_count ?? "";
       $("#f_assigned_rep_note").value = rv.assigned_rep_note || "";
@@ -400,6 +410,7 @@
       };
       const reviewPayload = {
         last_review_text: $("#f_last_review_text").value.trim() || null,
+        next_review_date: $("#f_next_review_date").value || null,
         next_review_text: $("#f_next_review_text").value.trim() || null,
         material_count: $("#f_material_count").value ? Number($("#f_material_count").value) : null,
         assigned_rep_note: $("#f_assigned_rep_note").value.trim() || null,
@@ -478,7 +489,7 @@
     $("#dashUpcoming").innerHTML = data.upcoming.length
       ? data.upcoming.map((u) => `
           <tr>
-            <td>${escapeHtml(u.next_review_text || u.next_review_date || "")}</td>
+            <td>${escapeHtml(formatNextReview(u))}</td>
             <td>${escapeHtml(u.household_name)}</td>
             <td>${escapeHtml(u.community_name || "")}</td>
             <td>${escapeHtml(u.advisor || "")}</td>

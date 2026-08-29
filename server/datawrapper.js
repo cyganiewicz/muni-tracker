@@ -11,10 +11,10 @@
  * testing) and callers get { skipped: true } back.
  *
  * IMPORTANT: this ships with a *reasonable guess* at the CSV columns
- * (one row per community, with client/done counts). Open the existing
- * Datawrapper chart's "Data" tab once after first deploy and confirm the
- * column names line up with what the map is keyed on -- adjust buildCsv()
- * below if not.
+ * (one row per CLIENT, including its community and region). Open the
+ * existing Datawrapper chart's "Data" tab once after first deploy and
+ * confirm the column names line up with what the map is keyed on --
+ * adjust buildCsv() below if not.
  */
 
 const DW_API = "https://api.datawrapper.de/v3";
@@ -24,32 +24,45 @@ function getCurrentCycleId(db) {
   return row ? row.id : null;
 }
 
+// One row per active client -- each client carries its own community,
+// county, municipal type, region/territory, and advisor, plus this
+// cycle's review status.
 function buildCsv(db, cycleId) {
   const cid = cycleId || getCurrentCycleId(db);
   const rows = db.prepare(`
     SELECT
+      cl.household_name,
       c.name AS community,
       c.municipal_type,
       c.county,
-      r.advisor,
       r.id AS region,
-      COUNT(cl.id) AS clients,
-      SUM(CASE WHEN rv.done = 1 THEN 1 ELSE 0 END) AS done
-    FROM communities c
-    LEFT JOIN clients cl ON cl.community_id = c.id AND cl.active = 1
+      r.label AS region_label,
+      r.advisor,
+      rv.done,
+      rv.last_review_text,
+      rv.last_review_date,
+      rv.next_review_text,
+      rv.next_review_date
+    FROM clients cl
+    LEFT JOIN communities c ON c.id = cl.community_id
+    LEFT JOIN regions r ON r.id = cl.region_id
     LEFT JOIN reviews rv ON rv.client_id = cl.id AND rv.cycle_id = ?
-    LEFT JOIN regions r ON r.id = c.region_id
-    GROUP BY c.id
-    ORDER BY c.name
+    WHERE cl.active = 1
+    ORDER BY c.name, cl.household_name
   `).all(cid);
 
-  const header = ["community", "municipal_type", "county", "advisor", "region", "clients", "done", "pct_done"];
+  const header = [
+    "household_name", "community", "municipal_type", "county",
+    "region", "region_label", "advisor", "done",
+    "last_review", "next_review",
+  ];
   const lines = [header.join(",")];
   for (const row of rows) {
-    const pct = row.clients > 0 ? Math.round((row.done / row.clients) * 100) : 0;
     const vals = [
-      row.community, row.municipal_type || "", row.county || "",
-      row.advisor || "", row.region || "", row.clients || 0, row.done || 0, pct,
+      row.household_name, row.community || "", row.municipal_type || "", row.county || "",
+      row.region || "", row.region_label || "", row.advisor || "", row.done ? "Yes" : "No",
+      row.last_review_text || row.last_review_date || "",
+      row.next_review_text || row.next_review_date || "",
     ].map((v) => {
       const s = String(v ?? "");
       return /[,"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
