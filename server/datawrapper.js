@@ -82,7 +82,7 @@ function buildTownCsv(db, cycleId) {
 
   const header = [
     "community", "datawrapper_code", "municipal_type", "county",
-    "region", "region_label", "advisor",
+    "region", "region_label", "advisor", "has_client",
     "client_count", "done_count", "pct_done", "household_name", "next_upcoming_review",
   ];
   const lines = [header.join(",")];
@@ -98,9 +98,12 @@ function buildTownCsv(db, cycleId) {
       .map((c) => c.next_review_date)
       .sort()[0] || "";
 
+    // Every one of the 351 towns gets a row even with zero clients -- this
+    // is how a zero-client town still shows up on the map as a prospect
+    // instead of being blank/absent.
     const vals = [
       t.community, t.datawrapper_code || "", t.municipal_type || "", t.county || "",
-      t.region || "", t.region_label || "", t.advisor || "",
+      t.region || "", t.region_label || "", t.advisor || "", clientCount > 0 ? "Yes" : "No",
       clientCount, doneCount, pctDone, householdNames, upcoming,
     ].map(csvEscape);
     lines.push(vals.join(","));

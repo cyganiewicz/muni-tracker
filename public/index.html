@@ -74,6 +74,14 @@
           <div class="dash-label">Overall complete (<span id="dashTotalDone">0</span> of <span id="dashTotalAll">0</span>)</div>
         </div>
         <div class="dash-card">
+          <div class="dash-num" id="dashStaleCount">–</div>
+          <div class="dash-label">Reviews over 1 year old</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-num" id="dashLast30Pct">–</div>
+          <div class="dash-label">Completed in last 30 days (<span id="dashLast30Count">0</span> of <span id="dashLast30Total">0</span>)</div>
+        </div>
+        <div class="dash-card">
           <h3>By advisor</h3>
           <div id="dashByAdvisor" class="bar-list"></div>
         </div>
@@ -90,6 +98,21 @@
           <table class="upcoming-table">
             <thead><tr><th>Date</th><th>Client</th><th>Town</th><th>Advisor</th></tr></thead>
             <tbody id="dashUpcoming"></tbody>
+          </table>
+        </div>
+        <div class="dash-card wide">
+          <h3>Reviews over 1 year old <span id="dashStaleNote" class="muted small"></span></h3>
+          <table class="upcoming-table">
+            <thead><tr><th>Client</th><th>Town</th><th>Advisor</th><th>Last review</th></tr></thead>
+            <tbody id="dashStale"></tbody>
+          </table>
+        </div>
+        <div class="dash-card wide">
+          <h3>New treasurers (last 6 months)</h3>
+          <p class="muted small">Excludes anyone already reviewed within the last 6 months.</p>
+          <table class="upcoming-table">
+            <thead><tr><th>Client</th><th>Town</th><th>Advisor</th><th>Treasurer since</th></tr></thead>
+            <tbody id="dashNewTreasurers"></tbody>
           </table>
         </div>
         <div class="dash-card wide">
@@ -210,9 +233,14 @@
           </label>
         </div>
 
-        <label>Coverage note <span class="muted small">(persists across cycles)</span>
-          <input id="f_coverage_note" placeholder="e.g. 2 advisors, needs Kathleen" />
-        </label>
+        <div class="grid2">
+          <label>Coverage note <span class="muted small">(persists across cycles)</span>
+            <input id="f_coverage_note" placeholder="e.g. 2 advisors, needs Kathleen" />
+          </label>
+          <label>Treasurer start date <span class="muted small">(persists across cycles)</span>
+            <input id="f_treasurer_start_date" type="date" />
+          </label>
+        </div>
 
         <label>Client notes <span class="muted small">(persists across cycles)</span>
           <textarea id="f_special_notes" rows="2"></textarea>

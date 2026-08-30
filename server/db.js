@@ -25,6 +25,7 @@ function ensureColumn(table, column, ddl) {
   }
 }
 ensureColumn("communities", "datawrapper_code", "datawrapper_code TEXT");
+ensureColumn("clients", "treasurer_start_date", "treasurer_start_date TEXT");
 
 function isSeeded() {
   const row = db.prepare("SELECT value FROM app_meta WHERE key = 'seeded'").get();

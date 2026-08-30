@@ -17,7 +17,8 @@ What's included:
   Town and a separate water/broadband/library district in the same place) —
   add them as separate clients under the same community.
 - A dashboard mirroring your old Dashboard tab: % complete per advisor, per
-  territory, and a list of upcoming reviews.
+  territory, a list of upcoming reviews, and a few extra metrics worth
+  keeping an eye on — see **Dashboard metrics** below.
 - One-click CSV export, and automatic push to your Datawrapper map whenever
   data changes (once you configure it — see below).
 - A change history on every client record, so if something looks wrong you
@@ -158,10 +159,11 @@ purposes:
   with several clients (say, a Town Hall and a separate water/broadband
   district) does **not** get multiple rows — it gets one row whose
   `household_name` column contains every client's name in that town,
-  joined with `<br>` between them. A town with zero clients gets one row
-  too, with an empty `household_name` and `client_count` = 0, so it still
-  appears on the map instead of being blank. Columns: `community,
-  datawrapper_code, municipal_type, county, region, region_label, advisor,
+  joined with `<br>` between them. A town with zero clients still gets its
+  own row, with `has_client` = "No", an empty `household_name`, and
+  `client_count` = 0 — so it shows up on the map as a prospect instead of
+  being blank or absent. Columns: `community, datawrapper_code,
+  municipal_type, county, region, region_label, advisor, has_client,
   client_count, done_count, pct_done, household_name,
   next_upcoming_review`.
 
@@ -254,6 +256,40 @@ schedule (quarterly, etc.) — someone has to click the button when your
 team is ready to start the next round. That's deliberate (auto-resetting
 live data on a timer felt risky without knowing your exact cadence), but
 if you'd rather it happen automatically I can add that.
+
+## Dashboard metrics
+
+Beyond the original % complete by advisor/territory and the upcoming-reviews
+list, the Dashboard tracks three more things:
+
+- **Reviews over 1 year old** — a count (plus a table of the oldest 25) of
+  active clients whose most recent *actual* review is more than a year in
+  the past, or who have no review on record at all. "Most recent actual
+  review" means: if they're marked done this cycle, the date they were
+  completed; otherwise, the last-review date on file. This is meant to
+  surface accounts that are quietly going stale even if nobody's actively
+  flagged them.
+- **Completed in last 30 days** — the % (and raw count, out of all active
+  clients) of reviews marked done within the past 30 days. This is a pace
+  indicator — how much is actually getting done lately — not a measure of
+  whether anyone's behind schedule.
+- **New treasurers (last 6 months)** — a table of clients whose **Treasurer
+  start date** (a new persistent field on the client — see below) falls
+  within the last 6 months, meant to flag towns where a review might be
+  worth prioritizing because whoever's handling the account changed
+  recently. A client drops off this list once a review has been completed
+  for them within that same 6-month window — the assumption being that if
+  you've already met with the new treasurer, you don't need a second
+  flag telling you to.
+
+### Treasurer start date
+
+A new field on each client, alongside Coverage note in the edit form —
+persists across review cycles just like the coverage note and client notes
+do, since it's a fact about the account, not about any one review. Leave it
+blank for clients where this doesn't apply or isn't known; it's entirely
+optional and only clients with a date set are ever considered for the
+"new treasurers" metric.
 
 ## Datawrapper map embed on the Dashboard
 

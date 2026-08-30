@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS clients (
 
   special_notes TEXT,            -- persistent facts about the client (conflicts of interest, relationship notes) - carries forward across cycles
   coverage_note TEXT,            -- persistent coverage arrangement, e.g. "2 advisors", "needs Kathleen"
+  treasurer_start_date TEXT,     -- ISO date the current treasurer/contact started -- persists across cycles, drives the "new treasurer" dashboard metric
 
   active INTEGER NOT NULL DEFAULT 1,   -- soft-delete flag
 

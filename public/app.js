@@ -350,6 +350,7 @@
       $("#f_material_count").value = "";
       $("#f_assigned_rep_note").value = "";
       $("#f_coverage_note").value = "";
+      $("#f_treasurer_start_date").value = "";
       $("#f_special_notes").value = "";
       $("#f_review_notes").value = "";
       $("#f_done").checked = false;
@@ -369,6 +370,7 @@
       $("#f_material_count").value = rv.material_count ?? "";
       $("#f_assigned_rep_note").value = rv.assigned_rep_note || "";
       $("#f_coverage_note").value = row.coverage_note || "";
+      $("#f_treasurer_start_date").value = row.treasurer_start_date || "";
       $("#f_special_notes").value = row.special_notes || "";
       $("#f_review_notes").value = rv.review_notes || "";
       $("#f_done").checked = !!rv.done;
@@ -416,6 +418,7 @@
         community_id,
         mailing_city: $("#f_mailing_city").value.trim() || null,
         coverage_note: $("#f_coverage_note").value.trim() || null,
+        treasurer_start_date: $("#f_treasurer_start_date").value || null,
         special_notes: $("#f_special_notes").value.trim() || null,
       };
       const reviewPayload = {
@@ -506,6 +509,33 @@
             <td>${escapeHtml(u.advisor || "")}</td>
           </tr>`).join("")
       : '<tr><td colspan="4" class="muted">Nothing scheduled yet.</td></tr>';
+
+    $("#dashStaleCount").textContent = data.staleReviews.count;
+    $("#dashStaleNote").textContent = data.staleReviews.count > data.staleReviews.list.length
+      ? `(showing ${data.staleReviews.list.length} of ${data.staleReviews.count})` : "";
+    $("#dashStale").innerHTML = data.staleReviews.list.length
+      ? data.staleReviews.list.map((r) => `
+          <tr>
+            <td>${escapeHtml(r.household_name)}</td>
+            <td>${escapeHtml(r.community_name || "")}</td>
+            <td>${escapeHtml(r.advisor || "")}</td>
+            <td>${escapeHtml(r.effective_last_review || "Never")}</td>
+          </tr>`).join("")
+      : '<tr><td colspan="4" class="muted">None — everyone’s been reviewed within the last year.</td></tr>';
+
+    $("#dashLast30Pct").textContent = Math.round((data.completedLast30.pct || 0) * 100) + "%";
+    $("#dashLast30Count").textContent = data.completedLast30.count;
+    $("#dashLast30Total").textContent = data.completedLast30.totalActive;
+
+    $("#dashNewTreasurers").innerHTML = data.newTreasurers.list.length
+      ? data.newTreasurers.list.map((r) => `
+          <tr>
+            <td>${escapeHtml(r.household_name)}</td>
+            <td>${escapeHtml(r.community_name || "")}</td>
+            <td>${escapeHtml(r.advisor || "")}</td>
+            <td>${escapeHtml(r.treasurer_start_date || "")}</td>
+          </tr>`).join("")
+      : '<tr><td colspan="4" class="muted">None right now.</td></tr>';
 
     $("#cycleHistory").innerHTML = cycles.map((c) => `
       <tr>

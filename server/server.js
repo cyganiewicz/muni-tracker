@@ -267,7 +267,7 @@ app.post("/api/admin/cycles/new", requireAdmin, (req, res) => {
 });
 
 // ---------- clients + current-cycle reviews ----------
-const CLIENT_FIELDS = ["household_name", "community_id", "mailing_city", "region_id", "special_notes", "coverage_note", "active"];
+const CLIENT_FIELDS = ["household_name", "community_id", "mailing_city", "region_id", "special_notes", "coverage_note", "treasurer_start_date", "active"];
 const REVIEW_FIELDS = [
   "last_review_text", "last_review_date", "next_review_text", "next_review_date",
   "material_count", "assigned_rep_note", "review_notes", "done",
@@ -357,7 +357,7 @@ app.post("/api/clients", (req, res) => {
 
   const cCols = ["household_name", "region_id"];
   const cVals = [String(body.household_name).trim(), body.region_id];
-  for (const f of ["community_id", "mailing_city", "special_notes", "coverage_note"]) {
+  for (const f of ["community_id", "mailing_city", "special_notes", "coverage_note", "treasurer_start_date"]) {
     if (body[f] !== undefined) { cCols.push(f); cVals.push(body[f]); }
   }
   cCols.push("updated_by"); cVals.push(req.session.name || "unknown");
@@ -491,6 +491,17 @@ app.get("/api/clients/:id/history", (req, res) => {
 });
 
 // ---------- dashboard ----------
+function isoDaysAgo(n) {
+  const d = new Date();
+  d.setDate(d.getDate() - n);
+  return d.toISOString().slice(0, 10);
+}
+function isoMonthsAgo(n) {
+  const d = new Date();
+  d.setMonth(d.getMonth() - n);
+  return d.toISOString().slice(0, 10);
+}
+
 app.get("/api/dashboard", (req, res) => {
   const cycleId = resolveCycleId(req);
   if (!cycleId) return res.status(400).json({ error: "no_active_cycle" });
@@ -532,11 +543,66 @@ app.get("/api/dashboard", (req, res) => {
 
   const cycle = db.prepare("SELECT * FROM cycles WHERE id = ?").get(cycleId);
 
+  // Reviews over 1 year old: the most recent *actual* review for each
+  // active client -- this cycle's completion date if they're done, else
+  // whatever last-review date carried into this cycle -- is more than a
+  // year in the past, or there's no review on record at all.
+  const oneYearAgo = isoDaysAgo(365);
+  const staleCandidates = db.prepare(`
+    SELECT cl.id, cl.household_name, c.name AS community_name, r.advisor,
+           CASE WHEN rv.done = 1 THEN date(rv.completed_at) ELSE rv.last_review_date END AS effective_last_review
+    FROM clients cl
+    JOIN reviews rv ON rv.client_id = cl.id AND rv.cycle_id = ?
+    LEFT JOIN communities c ON c.id = cl.community_id
+    JOIN regions r ON r.id = cl.region_id
+    WHERE cl.active = 1
+  `).all(cycleId);
+  const staleReviewsList = staleCandidates
+    .filter((r) => !r.effective_last_review || r.effective_last_review < oneYearAgo)
+    .sort((a, b) => (a.effective_last_review || "").localeCompare(b.effective_last_review || ""));
+  const staleReviews = { count: staleReviewsList.length, list: staleReviewsList.slice(0, 25) };
+
+  // % of active reviews completed in the last 30 days -- a pace/momentum
+  // indicator (how much is getting done lately), not tied to a due date.
+  const thirtyDaysAgo = isoDaysAgo(30);
+  const completedLast30Count = db.prepare(`
+    SELECT COUNT(*) AS n FROM reviews rv JOIN clients cl ON cl.id = rv.client_id
+    WHERE rv.cycle_id = ? AND cl.active = 1 AND rv.done = 1
+      AND rv.completed_at IS NOT NULL AND date(rv.completed_at) >= ?
+  `).get(cycleId, thirtyDaysAgo).n;
+  const completedLast30 = {
+    count: completedLast30Count,
+    totalActive: totals.total || 0,
+    pct: totals.total ? completedLast30Count / totals.total : 0,
+  };
+
+  // Towns/clients with a new treasurer in the last 6 months (by
+  // treasurer_start_date), unless a review has already been completed for
+  // them within that same window -- that's treated as the team having
+  // already caught up with the new treasurer, so it drops off this list.
+  // Checked against every review ever recorded for the client (not just
+  // this cycle), since a qualifying review could have landed in a cycle
+  // that's since closed.
+  const sixMonthsAgo = isoMonthsAgo(6);
+  const treasurerCandidates = db.prepare(`
+    SELECT cl.id, cl.household_name, c.name AS community_name, r.advisor, cl.treasurer_start_date,
+           (SELECT MAX(rv2.completed_at) FROM reviews rv2 WHERE rv2.client_id = cl.id AND rv2.done = 1) AS last_completed_at
+    FROM clients cl
+    LEFT JOIN communities c ON c.id = cl.community_id
+    JOIN regions r ON r.id = cl.region_id
+    WHERE cl.active = 1 AND cl.treasurer_start_date IS NOT NULL AND cl.treasurer_start_date >= ?
+  `).all(sixMonthsAgo);
+  const newTreasurersList = treasurerCandidates
+    .filter((r) => !r.last_completed_at || r.last_completed_at.slice(0, 10) < sixMonthsAgo)
+    .sort((a, b) => (b.treasurer_start_date || "").localeCompare(a.treasurer_start_date || ""));
+  const newTreasurers = { count: newTreasurersList.length, list: newTreasurersList };
+
   res.json({
     cycle,
     perAdvisor, perRegion,
     totals: { total: totals.total || 0, done: totals.done || 0, pct_done: totals.total ? totals.done / totals.total : 0 },
     upcoming,
+    staleReviews, completedLast30, newTreasurers,
   });
 });
 
