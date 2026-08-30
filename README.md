@@ -8,6 +8,16 @@ same client at nearly the same moment, the second save is rejected with a
 clear "someone else just updated this" message instead of silently winning
 or losing.
 
+One nuance worth knowing: a client's static details (name, town, notes) and
+its current-cycle review (dates, done status, etc.) are two separate
+records under the hood, each with their own conflict check. They save
+independently — a conflict on one never blocks or silently drops the
+other. This matters most for the "Review complete" checkbox: if someone
+else happened to edit that same client's notes at nearly the same moment,
+you'll be told that specific part needs to be redone, but your review
+completion still goes through and still counts. Marking a review done is
+never lost to an unrelated conflict.
+
 What's included:
 
 - A shared client roster (household/entity name, community/town, review
@@ -265,10 +275,12 @@ list, the Dashboard tracks three more things:
 - **Reviews over 1 year old** — a count (plus a table of the oldest 25) of
   active clients whose most recent *actual* review is more than a year in
   the past, or who have no review on record at all. "Most recent actual
-  review" means: if they're marked done this cycle, the date they were
-  completed; otherwise, the last-review date on file. This is meant to
-  surface accounts that are quietly going stale even if nobody's actively
-  flagged them.
+  review" means: the exact timestamp a review was marked done (see below),
+  falling back to whatever last-review date is on file when there's no
+  timestamp — which mainly covers clients that came in already marked done
+  from the original spreadsheet migration, which had no timestamp to give
+  them. This is meant to surface accounts that are quietly going stale even
+  if nobody's actively flagged them.
 - **Completed in last 30 days** — the % (and raw count, out of all active
   clients) of reviews marked done within the past 30 days. This is a pace
   indicator — how much is actually getting done lately — not a measure of
@@ -281,6 +293,29 @@ list, the Dashboard tracks three more things:
   for them within that same 6-month window — the assumption being that if
   you've already met with the new treasurer, you don't need a second
   flag telling you to.
+
+### Last review date, and how "done" drives these metrics
+
+The client form now has a real **Last review date** field (it existed in
+the database before, but nothing in the UI actually let anyone set it —
+only the free-text "Last review — note" field was ever saved). Two things
+now use it:
+
+- **Auto-fill on completion.** When you check "Review complete," Last
+  review date automatically fills in with whatever was in Next review
+  date — the idea being that if the review happened, it happened on/around
+  when it was scheduled. You can always type over it with a different date
+  before saving if the actual review happened on a different day.
+- **This is purely a record-keeping convenience and does not touch the
+  "completed in last 30 days" metric.** That metric — and the precise
+  timestamp behind "Reviews over 1 year old" — is driven entirely by
+  `completed_at`, a separate, invisible timestamp the server stamps the
+  instant the "done" checkbox actually flips from unchecked to checked.
+  Editing Last review date, whether auto-filled or typed in by hand, never
+  changes `completed_at`. That's deliberate: your team wants to track how
+  much is actually getting done during the review cycle, and that has to
+  stay tied to the real moment someone checked the box, not to a
+  schedule-derived date that could be edited.
 
 ### Treasurer start date
 

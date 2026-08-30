@@ -344,6 +344,7 @@
       $("#f_region_id").value = state.regions[0]?.id || "";
       $("#f_community").value = "";
       $("#f_mailing_city").value = "";
+      $("#f_last_review_date").value = "";
       $("#f_last_review_text").value = "";
       $("#f_next_review_date").value = "";
       $("#f_next_review_text").value = "";
@@ -364,6 +365,7 @@
       $("#f_region_id").value = row.region_id || "";
       $("#f_community").value = row.community_name || "";
       $("#f_mailing_city").value = row.mailing_city || "";
+      $("#f_last_review_date").value = rv.last_review_date || "";
       $("#f_last_review_text").value = rv.last_review_text || "";
       $("#f_next_review_date").value = rv.next_review_date || "";
       $("#f_next_review_text").value = rv.next_review_text || "";
@@ -395,6 +397,25 @@
     } catch (e) { /* ignore */ }
   }
 
+  // Checking "Review complete" auto-fills the Last review date with
+  // whatever was on the books as the scheduled (next) review date -- on
+  // the theory that if it got done, it got done on/around when it was
+  // supposed to. This only touches the visible form field the advisor is
+  // about to save, so it's freely overridable before submitting, and it
+  // has no effect on completed_at (which the server always stamps with
+  // the actual moment "done" is checked) -- so the cycle-tracking metrics
+  // that depend on completed_at are untouched by this.
+  $("#f_done").addEventListener("change", () => {
+    if ($("#f_done").checked && $("#f_next_review_date").value) {
+      $("#f_last_review_date").value = $("#f_next_review_date").value;
+    }
+  });
+
+  function describeSaveError(label, err) {
+    if (err.status === 409) return `Someone else just updated ${label} — please redo that part of your change and save again.`;
+    return `Could not save ${label}: ${err.message || "unknown error"}`;
+  }
+
   async function resolveCommunityId(name) {
     const trimmed = name.trim();
     if (!trimmed) return null;
@@ -422,6 +443,7 @@
         special_notes: $("#f_special_notes").value.trim() || null,
       };
       const reviewPayload = {
+        last_review_date: $("#f_last_review_date").value || null,
         last_review_text: $("#f_last_review_text").value.trim() || null,
         next_review_date: $("#f_next_review_date").value || null,
         next_review_text: $("#f_next_review_text").value.trim() || null,
@@ -432,10 +454,28 @@
       };
 
       if (editing) {
-        await api(`/clients/${editing.id}`, { method: "PATCH", body: { ...clientPayload, version: Number($("#f_version").value) } });
-        if (editing.review && editing.review.id) {
-          await api(`/reviews/${editing.review.id}`, { method: "PATCH", body: { ...reviewPayload, version: Number($("#f_review_version").value) } });
+        // Client-level fields and this cycle's review are two separate
+        // records with their own version numbers, saved independently --
+        // a conflict on one (someone else edited that specific record)
+        // must never silently swallow the other. In particular, marking
+        // a review "done" is the whole point of this app's metrics, so it
+        // must never get lost just because an unrelated client field (say,
+        // a coverage note) was edited by someone else at nearly the same
+        // moment.
+        let clientErr = null, reviewErr = null;
+        try {
+          await api(`/clients/${editing.id}`, { method: "PATCH", body: { ...clientPayload, version: Number($("#f_version").value) } });
+        } catch (err) {
+          clientErr = err;
         }
+        if (editing.review && editing.review.id) {
+          try {
+            await api(`/reviews/${editing.review.id}`, { method: "PATCH", body: { ...reviewPayload, version: Number($("#f_review_version").value) } });
+          } catch (err) {
+            reviewErr = err;
+          }
+        }
+        if (clientErr || reviewErr) throw { combined: true, clientErr, reviewErr };
       } else {
         await api("/clients", { method: "POST", body: { ...clientPayload, ...reviewPayload } });
       }
@@ -444,7 +484,29 @@
       if (!state.mailingCities.includes($("#f_mailing_city").value.trim())) await refreshMailingCities();
       await loadClients();
     } catch (err) {
-      if (err.status === 409) {
+      if (err && err.combined) {
+        const parts = [];
+        if (err.clientErr) parts.push(describeSaveError("the client details", err.clientErr));
+        if (err.reviewErr) parts.push(describeSaveError("this cycle's review", err.reviewErr));
+        if (!err.clientErr) parts.unshift("Client details saved.");
+        if (!err.reviewErr && editing.review) parts.unshift("This cycle's review saved.");
+        $("#formError").innerHTML = parts.join("<br>");
+        $("#formError").hidden = false;
+
+        // Refresh to the latest server state so the version fields are
+        // current if they retry, and so the list behind the modal shows
+        // whichever half of the save actually went through.
+        try {
+          const latest = await api(`/clients/${editing.id}`);
+          editing = latest;
+          $("#f_version").value = latest.version;
+          if (latest.review) {
+            $("#f_review_id").value = latest.review.id;
+            $("#f_review_version").value = latest.review.version;
+          }
+        } catch (e) { /* ignore */ }
+        await loadClients();
+      } else if (err.status === 409) {
         $("#formError").textContent = "Someone else just updated this client — reopening with their latest version. Please redo your change.";
         $("#formError").hidden = false;
         if (err.data && err.data.current) {

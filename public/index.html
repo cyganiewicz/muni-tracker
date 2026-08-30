@@ -210,15 +210,18 @@
         </div>
 
         <div class="grid2">
-          <label>Last review (text)
-            <input id="f_last_review_text" placeholder="e.g. 5/13 @ 3:30" />
+          <label>Last review date <span class="muted small">(auto-fills from the scheduled date when you check "Review complete" below — feel free to correct it)</span>
+            <input id="f_last_review_date" type="date" />
           </label>
-          <label>Next review date
-            <input id="f_next_review_date" type="date" />
+          <label>Last review — note
+            <input id="f_last_review_text" placeholder="e.g. 5/13 @ 3:30" />
           </label>
         </div>
 
         <div class="grid2">
+          <label>Next review date
+            <input id="f_next_review_date" type="date" />
+          </label>
           <label>Next review — time/location note
             <input id="f_next_review_text" placeholder="e.g. @ 11:30 (lunch)" />
           </label>

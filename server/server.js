@@ -544,13 +544,16 @@ app.get("/api/dashboard", (req, res) => {
   const cycle = db.prepare("SELECT * FROM cycles WHERE id = ?").get(cycleId);
 
   // Reviews over 1 year old: the most recent *actual* review for each
-  // active client -- this cycle's completion date if they're done, else
-  // whatever last-review date carried into this cycle -- is more than a
-  // year in the past, or there's no review on record at all.
+  // active client -- prefer the precise completed_at timestamp (set the
+  // moment someone checks "done"), falling back to whatever last-review
+  // date is on file when there's no completed_at (e.g. a client that
+  // came in already marked done from the original spreadsheet migration,
+  // which had no timestamp to give it) -- is more than a year in the
+  // past, or there's no review on record at all either way.
   const oneYearAgo = isoDaysAgo(365);
   const staleCandidates = db.prepare(`
     SELECT cl.id, cl.household_name, c.name AS community_name, r.advisor,
-           CASE WHEN rv.done = 1 THEN date(rv.completed_at) ELSE rv.last_review_date END AS effective_last_review
+           COALESCE(date(rv.completed_at), rv.last_review_date) AS effective_last_review
     FROM clients cl
     JOIN reviews rv ON rv.client_id = cl.id AND rv.cycle_id = ?
     LEFT JOIN communities c ON c.id = cl.community_id
