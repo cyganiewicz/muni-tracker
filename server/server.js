@@ -565,34 +565,6 @@ app.get("/api/dashboard", (req, res) => {
     .sort((a, b) => (a.effective_last_review || "").localeCompare(b.effective_last_review || ""));
   const staleReviews = { count: staleReviewsList.length, list: staleReviewsList.slice(0, 25) };
 
-  // Completed in the last 30 days -- a plain count, not a percentage (with
-  // a few hundred clients, a handful of completions rounds away to a
-  // meaningless "0%"), plus the actual list of who's in it so the number
-  // is directly checkable against the real "done" checkboxes instead of
-  // being an opaque figure to take on faith. Driven by completed_at, the
-  // exact moment "done" flips from unchecked to checked -- falling back to
-  // the change-log's own record of that same event on the rare chance a
-  // currently-done review's completed_at itself is missing.
-  const thirtyDaysAgo = isoDaysAgo(30);
-  const completedLast30Rows = db.prepare(`
-    SELECT cl.id, cl.household_name, c.name AS community_name, r.advisor,
-           COALESCE(
-             date(rv.completed_at),
-             date((SELECT MAX(cg.changed_at) FROM change_log cg
-                   WHERE cg.entity_type = 'review' AND cg.entity_id = rv.id
-                     AND cg.field = 'done' AND cg.new_value = '1'))
-           ) AS completed_date
-    FROM reviews rv
-    JOIN clients cl ON cl.id = rv.client_id
-    LEFT JOIN communities c ON c.id = cl.community_id
-    JOIN regions r ON r.id = cl.region_id
-    WHERE rv.cycle_id = ? AND cl.active = 1 AND rv.done = 1
-  `).all(cycleId);
-  const completedLast30List = completedLast30Rows
-    .filter((r) => r.completed_date && r.completed_date >= thirtyDaysAgo)
-    .sort((a, b) => b.completed_date.localeCompare(a.completed_date));
-  const completedLast30 = { count: completedLast30List.length, list: completedLast30List };
-
   // Towns/clients with a new treasurer in the last 6 months (by
   // treasurer_start_date), unless a review has already been completed for
   // them within that same window -- that's treated as the team having
@@ -619,7 +591,7 @@ app.get("/api/dashboard", (req, res) => {
     perAdvisor, perRegion,
     totals: { total: totals.total || 0, done: totals.done || 0, pct_done: totals.total ? totals.done / totals.total : 0 },
     upcoming,
-    staleReviews, completedLast30, newTreasurers,
+    staleReviews, newTreasurers,
   });
 });
 

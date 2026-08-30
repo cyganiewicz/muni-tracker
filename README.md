@@ -270,27 +270,20 @@ if you'd rather it happen automatically I can add that.
 ## Dashboard metrics
 
 Beyond the original % complete by advisor/territory and the upcoming-reviews
-list, the Dashboard tracks three more things:
+list, the Dashboard tracks two more things:
 
-- **Reviews over 1 year old** — a count (plus a table of the oldest 25) of
+- **Reviews over 1 year old** — a table (oldest first, capped at 25, with
+  the true total count in the heading even when there are more than 25) of
   active clients whose most recent *actual* review is more than a year in
-  the past, or who have no review on record at all. "Most recent actual
-  review" means: the exact timestamp a review was marked done (see below),
+  the past, or who have no review date on record at all. "Most recent
+  actual review" means: the exact timestamp a review was marked done,
   falling back to whatever last-review date is on file when there's no
   timestamp — which mainly covers clients that came in already marked done
   from the original spreadsheet migration, which had no timestamp to give
-  them. This is meant to surface accounts that are quietly going stale even
-  if nobody's actively flagged them.
-- **Completed in last 30 days** — a plain count (not a percentage — with a
-  few hundred clients, a handful of completions was rounding away to a
-  meaningless "0%"), plus a table listing exactly who's in it, so the
-  number is something you can check against reality rather than take on
-  faith. This is a pace indicator — how much is actually getting done
-  lately — not a measure of whether anyone's behind schedule. It's driven
-  by the precise moment a review is marked done (see below), with a
-  fallback to that same event's entry in the change history on the rare
-  chance the primary timestamp is missing for a review that's currently
-  marked done.
+  them. A blank date shows as "No date on file," not "Never" — an empty
+  field means the date wasn't recorded, not that a review never happened.
+  This is meant to surface accounts that are quietly going stale even if
+  nobody's actively flagged them.
 - **New treasurers (last 6 months)** — a table of clients whose **Treasurer
   start date** (a new persistent field on the client — see below) falls
   within the last 6 months, meant to flag towns where a review might be
@@ -300,28 +293,19 @@ list, the Dashboard tracks three more things:
   you've already met with the new treasurer, you don't need a second
   flag telling you to.
 
-### Last review date, and how "done" drives these metrics
+(An earlier version of this dashboard also had a "completed in last 30
+days" metric. It didn't hold up in practice, so it's been removed rather
+than patched again.)
+
+### Last review date
 
 The client form now has a real **Last review date** field (it existed in
 the database before, but nothing in the UI actually let anyone set it —
-only the free-text "Last review — note" field was ever saved). Two things
-now use it:
-
-- **Auto-fill on completion.** When you check "Review complete," Last
-  review date automatically fills in with whatever was in Next review
-  date — the idea being that if the review happened, it happened on/around
-  when it was scheduled. You can always type over it with a different date
-  before saving if the actual review happened on a different day.
-- **This is purely a record-keeping convenience and does not touch the
-  "completed in last 30 days" metric.** That metric — and the precise
-  timestamp behind "Reviews over 1 year old" — is driven entirely by
-  `completed_at`, a separate, invisible timestamp the server stamps the
-  instant the "done" checkbox actually flips from unchecked to checked.
-  Editing Last review date, whether auto-filled or typed in by hand, never
-  changes `completed_at`. That's deliberate: your team wants to track how
-  much is actually getting done during the review cycle, and that has to
-  stay tied to the real moment someone checked the box, not to a
-  schedule-derived date that could be edited.
+only the free-text "Last review — note" field was ever saved). Checking
+"Review complete" auto-fills it with whatever was in Next review date —
+the idea being that if the review happened, it happened on/around when it
+was scheduled — and you can always type over it with a different date
+before saving if the actual review happened on a different day.
 
 ### Treasurer start date
 

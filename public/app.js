@@ -590,29 +590,18 @@
           </tr>`).join("")
       : '<tr><td colspan="4" class="muted">Nothing scheduled yet.</td></tr>';
 
-    $("#dashStaleCount").textContent = data.staleReviews.count;
     $("#dashStaleNote").textContent = data.staleReviews.count > data.staleReviews.list.length
-      ? `(showing ${data.staleReviews.list.length} of ${data.staleReviews.count})` : "";
+      ? `— ${data.staleReviews.count} total, showing the oldest ${data.staleReviews.list.length}`
+      : `— ${data.staleReviews.count} total`;
     $("#dashStale").innerHTML = data.staleReviews.list.length
       ? data.staleReviews.list.map((r) => `
           <tr>
             <td>${escapeHtml(r.household_name)}</td>
             <td>${escapeHtml(r.community_name || "")}</td>
             <td>${escapeHtml(r.advisor || "")}</td>
-            <td>${escapeHtml(r.effective_last_review || "Never")}</td>
+            <td>${escapeHtml(r.effective_last_review || "No date on file")}</td>
           </tr>`).join("")
       : '<tr><td colspan="4" class="muted">None — everyone’s been reviewed within the last year.</td></tr>';
-
-    $("#dashLast30Count").textContent = data.completedLast30.count;
-    $("#dashCompletedRecent").innerHTML = data.completedLast30.list.length
-      ? data.completedLast30.list.map((r) => `
-          <tr>
-            <td>${escapeHtml(r.completed_date || "")}</td>
-            <td>${escapeHtml(r.household_name)}</td>
-            <td>${escapeHtml(r.community_name || "")}</td>
-            <td>${escapeHtml(r.advisor || "")}</td>
-          </tr>`).join("")
-      : '<tr><td colspan="4" class="muted">Nothing completed in the last 30 days yet.</td></tr>';
 
     $("#dashNewTreasurers").innerHTML = data.newTreasurers.list.length
       ? data.newTreasurers.list.map((r) => `
