@@ -78,8 +78,8 @@
           <div class="dash-label">Reviews over 1 year old</div>
         </div>
         <div class="dash-card">
-          <div class="dash-num" id="dashLast30Pct">–</div>
-          <div class="dash-label">Completed in last 30 days (<span id="dashLast30Count">0</span> of <span id="dashLast30Total">0</span>)</div>
+          <div class="dash-num" id="dashLast30Count">–</div>
+          <div class="dash-label">Completed in last 30 days</div>
         </div>
         <div class="dash-card">
           <h3>By advisor</h3>
@@ -91,13 +91,29 @@
         </div>
         <div class="dash-card wide" id="mapCard" hidden>
           <h3>Map</h3>
-          <div class="map-embed"><iframe id="datawrapperFrame" title="Client map" frameborder="0" scrolling="no"></iframe></div>
+          <div class="map-embed"><iframe
+            id="datawrapperFrame"
+            title="Bartholomew &amp; Company - Massachusetts Communities Territory Map"
+            aria-label="Choropleth map"
+            scrolling="no"
+            frameborder="0"
+            style="width: 0; min-width: 100% !important; border: none;"
+            height="747"
+            data-external="1"
+          ></iframe></div>
         </div>
         <div class="dash-card wide">
           <h3>Upcoming reviews</h3>
           <table class="upcoming-table">
             <thead><tr><th>Date</th><th>Client</th><th>Town</th><th>Advisor</th></tr></thead>
             <tbody id="dashUpcoming"></tbody>
+          </table>
+        </div>
+        <div class="dash-card wide">
+          <h3>Completed in last 30 days</h3>
+          <table class="upcoming-table">
+            <thead><tr><th>Date</th><th>Client</th><th>Town</th><th>Advisor</th></tr></thead>
+            <tbody id="dashCompletedRecent"></tbody>
           </table>
         </div>
         <div class="dash-card wide">

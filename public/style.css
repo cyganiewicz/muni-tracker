@@ -119,8 +119,13 @@ label.checkbox-row input { width: auto; }
 .upcoming-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--border); }
 .upcoming-table td { padding: 6px 8px; border-bottom: 1px solid #f0f1f3; }
 
-.map-embed { position: relative; width: 100%; min-height: 420px; }
-.map-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Datawrapper's own responsive-embed technique: the iframe's inline
+   width/min-width (set in the markup) makes it fill the card, and its
+   height is set directly (in px) by the postMessage listener in app.js
+   whenever the chart reports its own rendered height -- so no fixed
+   height or absolute positioning here, that would fight the resize. */
+.map-embed { width: 100%; }
+.map-embed iframe { display: block; }
 
 /* ---------- admin ---------- */
 .admin-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }

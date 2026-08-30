@@ -14,6 +14,24 @@
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
+  // Datawrapper's own responsive-embed script: the chart posts its
+  // rendered height across, and this resizes whichever iframe on the page
+  // matches the source window. Straight port of the snippet Datawrapper
+  // gives you on the chart's "Publish & Embed" tab, so the map iframe
+  // sizes itself instead of scrolling inside a fixed box.
+  window.addEventListener("message", (event) => {
+    const heights = event.data && event.data["datawrapper-height"];
+    if (!heights) return;
+    const frames = document.querySelectorAll("iframe");
+    for (const key in heights) {
+      for (const frame of frames) {
+        if (frame.contentWindow === event.source) {
+          frame.style.height = heights[key] + "px";
+        }
+      }
+    }
+  });
+
   async function api(path, opts = {}) {
     const res = await fetch("/api" + path, {
       headers: { "Content-Type": "application/json" },
@@ -585,9 +603,16 @@
           </tr>`).join("")
       : '<tr><td colspan="4" class="muted">None — everyone’s been reviewed within the last year.</td></tr>';
 
-    $("#dashLast30Pct").textContent = Math.round((data.completedLast30.pct || 0) * 100) + "%";
     $("#dashLast30Count").textContent = data.completedLast30.count;
-    $("#dashLast30Total").textContent = data.completedLast30.totalActive;
+    $("#dashCompletedRecent").innerHTML = data.completedLast30.list.length
+      ? data.completedLast30.list.map((r) => `
+          <tr>
+            <td>${escapeHtml(r.completed_date || "")}</td>
+            <td>${escapeHtml(r.household_name)}</td>
+            <td>${escapeHtml(r.community_name || "")}</td>
+            <td>${escapeHtml(r.advisor || "")}</td>
+          </tr>`).join("")
+      : '<tr><td colspan="4" class="muted">Nothing completed in the last 30 days yet.</td></tr>';
 
     $("#dashNewTreasurers").innerHTML = data.newTreasurers.list.length
       ? data.newTreasurers.list.map((r) => `

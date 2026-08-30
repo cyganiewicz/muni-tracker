@@ -281,10 +281,16 @@ list, the Dashboard tracks three more things:
   from the original spreadsheet migration, which had no timestamp to give
   them. This is meant to surface accounts that are quietly going stale even
   if nobody's actively flagged them.
-- **Completed in last 30 days** — the % (and raw count, out of all active
-  clients) of reviews marked done within the past 30 days. This is a pace
-  indicator — how much is actually getting done lately — not a measure of
-  whether anyone's behind schedule.
+- **Completed in last 30 days** — a plain count (not a percentage — with a
+  few hundred clients, a handful of completions was rounding away to a
+  meaningless "0%"), plus a table listing exactly who's in it, so the
+  number is something you can check against reality rather than take on
+  faith. This is a pace indicator — how much is actually getting done
+  lately — not a measure of whether anyone's behind schedule. It's driven
+  by the precise moment a review is marked done (see below), with a
+  fallback to that same event's entry in the change history on the rare
+  chance the primary timestamp is missing for a review that's currently
+  marked done.
 - **New treasurers (last 6 months)** — a table of clients whose **Treasurer
   start date** (a new persistent field on the client — see below) falls
   within the last 6 months, meant to flag towns where a review might be
@@ -335,6 +341,13 @@ end) and it'll show up right on the Dashboard. If you only set
 `DATAWRAPPER_CHART_ID`, the app will guess an unversioned URL, which may
 or may not resolve — the explicit `DATAWRAPPER_EMBED_URL` is the reliable
 option.
+
+The map uses Datawrapper's own responsive-embed technique (the same
+`<iframe>` + resize script Datawrapper gives you on that same "Publish &
+Embed" tab), so the map resizes itself to fit its actual content instead
+of scrolling inside a fixed-height box — a legend, extra-tall tooltip, or
+a future redesign of the chart itself all just work without anyone
+needing to touch this app's code.
 
 ## Managing the team
 
